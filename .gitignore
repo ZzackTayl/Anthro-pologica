@@ -1,0 +1,102 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build outputs
+build/
+dist/
+.next/
+.nuxt/
+public/build/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# Temporary folders
+tmp/
+temp/
+
+# Compiled JavaScript
+*.min.js
+*.bundle.js
+
+# TypeScript
+*.tsbuildinfo
+.next/tsconfig.tsbuildinfo
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Debug log
+debug.log
+
+# Local configuration
+config.local.*
+
+# Output of `npm pack`
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env.test
+
+# next.js
+out/
+
+# vercel
+.vercel/
+
+# vite
+.svelte-kit/
+
+# npm cache
+npm/
+
+# Lock files for package managers (keep package-lock.json for deployment)
+# package-lock.json
+yarn.lock
+
+# Platform generated files
+platforms/
+plugins/
+*.apk
+*.aab
+*.ipa
+
+# Miscellaneous
+.svn/
+CVS/

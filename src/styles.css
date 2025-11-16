@@ -1,0 +1,431 @@
+/**
+ * Global styles for Anthro-pologica project
+ * This file contains styles that were previously inline in components
+ */
+
+/* Styles for Project Card Components */
+.project-card {
+  min-height: 16rem;
+}
+
+.project-card-tall {
+  min-height: 20rem;
+}
+
+.project-card-extra-tall {
+  min-height: 28rem;
+}
+
+.project-card-footer {
+  min-height: 12rem;
+}
+
+.project-card-project-detail {
+  min-height: 32rem;
+}
+
+/* Styles for progress bar */
+.progress-bar {
+  transform: translateX(-calc(100% - var(--progress, 0) * 1%));
+}
+
+/* Styles for psychedelic colors */
+.psychedelic-magenta {
+  color: var(--psychedelic-magenta);
+}
+
+.psychedelic-cyan {
+  color: var(--psychedelic-cyan);
+}
+
+.psychedelic-yellow {
+  color: var(--psychedelic-yellow);
+}
+
+.psychedelic-purple {
+  color: var(--psychedelic-purple);
+}
+
+.psychedelic-pink {
+  color: var(--psychedelic-pink);
+}
+
+.psychedelic-orange {
+  color: var(--psychedelic-orange);
+}
+
+/* Background colors */
+.bg-psychedelic-magenta {
+  background-color: var(--psychedelic-magenta);
+}
+
+.bg-psychedelic-cyan {
+  background-color: var(--psychedelic-cyan);
+}
+
+.bg-psychedelic-yellow {
+  background-color: var(--psychedelic-yellow);
+}
+
+.bg-psychedelic-purple {
+  background-color: var(--psychedelic-purple);
+}
+
+.bg-psychedelic-pink {
+  background-color: var(--psychedelic-pink);
+}
+
+.bg-psychedelic-orange {
+  background-color: var(--psychedelic-orange);
+}
+
+/* Border colors */
+.border-psychedelic-magenta {
+  border-color: var(--psychedelic-magenta);
+}
+
+.border-psychedelic-cyan {
+  border-color: var(--psychedelic-cyan);
+}
+
+.border-psychedelic-yellow {
+  border-color: var(--psychedelic-yellow);
+}
+
+.border-psychedelic-purple {
+  border-color: var(--psychedelic-purple);
+}
+
+.border-psychedelic-pink {
+  border-color: var(--psychedelic-pink);
+}
+
+.border-psychedelic-orange {
+  border-color: var(--psychedelic-orange);
+}
+
+/* Gradient backgrounds */
+.gradient-radial-purple {
+  background: radial-gradient(circle, var(--psychedelic-purple), transparent);
+}
+
+.gradient-radial-pink {
+  background: radial-gradient(circle, var(--psychedelic-pink), transparent);
+}
+
+.gradient-radial-cyan {
+  background: radial-gradient(circle, var(--psychedelic-cyan), transparent);
+}
+
+.gradient-linear-main {
+  background: linear-gradient(135deg, var(--psychedelic-magenta), var(--psychedelic-cyan), var(--psychedelic-yellow), var(--psychedelic-orange));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Button wave effect */
+.button-wave {
+  background: linear-gradient(135deg, var(--psychedelic-magenta), var(--psychedelic-pink));
+  border-radius: 50px;
+  border: 3px solid var(--psychedelic-cyan);
+}
+
+/* Investor section styles */
+.investor-card-color {
+  /* Color will be set via style prop */
+}
+
+.bg-card {
+  background: rgba(26, 15, 46, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.bg-clip-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.text-transparent {
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+.bg-pulse-glow {
+  background: var(--psychedelic-cyan);
+  filter: blur(20px);
+}
+
+.bg-gradient-to-r {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
+
+.from-transparent {
+  --tw-gradient-from: transparent;
+  background: linear-gradient(to right, var(--tw-gradient-from), var(--tw-gradient-to));
+}
+
+.via-white\/30 {
+  --tw-gradient-via: rgba(255, 255, 255, 0.3);
+  background: linear-gradient(to right, var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to));
+}
+
+.to-transparent {
+  --tw-gradient-to: transparent;
+  background: linear-gradient(to right, var(--tw-gradient-from), var(--tw-gradient-to));
+}
+
+.portal-ring-magenta {
+  border-color: var(--psychedelic-magenta);
+}
+
+.portal-ring-cyan {
+  border-color: var(--psychedelic-cyan);
+}
+
+.bg-radial-purple-center {
+  background: radial-gradient(circle at center, var(--psychedelic-purple) 0%, transparent 70%);
+}
+
+.flowing-shape-0 {
+  background: linear-gradient(135deg, var(--psychedelic-magenta), transparent);
+}
+
+.flowing-shape-1 {
+  background: linear-gradient(135deg, var(--psychedelic-cyan), transparent);
+}
+
+.flowing-shape-2 {
+  background: linear-gradient(135deg, var(--psychedelic-orange), transparent);
+}
+
+.gradient-linear-pink-cyan {
+  background: linear-gradient(135deg, var(--psychedelic-pink), var(--psychedelic-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.philosophy-card {
+  background: rgba(26, 15, 46, 0.6);
+  backdrop-filter: blur(10px);
+}
+
+.philosophy-card-hover {
+  /* background will be set via style prop based on item */
+}
+
+.philosophy-card-blur {
+  filter: blur(40px);
+}
+
+.philosophy-card-title {
+  /* color will be set via style prop based on item */
+}
+
+.resource-card {
+  background: rgba(26, 15, 46, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.resource-card-gettingstarted {
+  /* Border color will be set via style prop */
+}
+
+.resource-card-research {
+  /* Border color will be set via style prop */
+}
+
+.resource-card-designsystems {
+  /* Border color will be set via style prop */
+}
+
+.resource-card-accessibility {
+  /* Border color will be set via style prop */
+}
+
+.resource-card-neurodivergent {
+  /* Border color will be set via style prop */
+}
+
+.resource-card-aitools {
+  /* Border color will be set via style prop */
+}
+
+.resource-card-templates {
+  /* Border color will be set via style prop */
+}
+
+.resource-card-casestudies {
+  /* Border color will be set via style prop */
+}
+
+.resource-card-hover-overlay {
+  /* Background will be set via style prop */
+}
+
+.resource-card-title {
+  /* Color will be set via style prop */
+}
+
+.resource-card-difficulty-beginner {
+  /* All styles will be set via style prop */
+}
+
+.resource-card-difficulty-intermediate {
+  /* All styles will be set via style prop */
+}
+
+.resource-card-difficulty-advanced {
+  /* All styles will be set via style prop */
+}
+
+.resource-card-meta {
+  /* All styles will be set via style prop */
+}
+
+.resource-card-label {
+  /* All styles will be set via style prop */
+}
+
+.resource-card-tag {
+  /* Background will be set via style prop */
+}
+
+.resource-card-footer {
+  /* Border color will be set via style prop */
+}
+
+.resource-card-footer-text {
+  /* Color will be set via style prop */
+}
+
+.resource-card-corner {
+  /* Background will be set via style prop */
+}
+
+.skill-card {
+  background: rgba(26, 15, 46, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.skill-card-glow {
+  /* Background will be set via style prop */
+}
+
+.skill-card-icon {
+  /* Color will be set via style prop */
+}
+
+.skill-card-title {
+  /* Color will be set via style prop */
+}
+
+.skill-card-details {
+  /* Border color will be set via style prop */
+}
+
+.skill-card-dot {
+  /* Background will be set via style prop */
+}
+
+.hero-title-gradient {
+  background: linear-gradient(135deg, var(--psychedelic-magenta), var(--psychedelic-cyan), var(--psychedelic-yellow), var(--psychedelic-orange));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.hero-button {
+  background: linear-gradient(135deg, var(--psychedelic-magenta), var(--psychedelic-pink));
+  border-radius: 50px;
+  border: 3px solid var(--psychedelic-cyan);
+}
+
+/* Team Section styles */
+.team-bg-gradient {
+  background: repeating-linear-gradient(45deg, transparent, transparent 10px, var(--psychedelic-purple) 10px, var(--psychedelic-purple) 11px);
+}
+
+.gradient-linear-yellow-orange-pink {
+  background: linear-gradient(135deg, var(--psychedelic-yellow), var(--psychedelic-orange), var(--psychedelic-pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.team-card {
+  background: rgba(26, 15, 46, 0.6);
+  backdrop-filter: blur(10px);
+  transform-style: preserve-3d;
+  perspective: 1000;
+}
+
+.team-geometric-frame {
+  /* border and opacity will be set via style prop */
+}
+
+.team-corner-topleft {
+  /* border styles will be set via style prop */
+}
+
+.team-corner-bottomright {
+  /* border styles will be set via style prop */
+}
+
+.team-card-heading {
+  /* color will be set via style prop */
+  transition: color 0.3s ease;
+}
+
+.team-card-heading-hover {
+  /* color will be set via style prop */
+  transition: color 0.3s ease;
+}
+
+.team-card-role {
+  /* color will be set via style prop */
+  transition: color 0.3s ease;
+}
+
+.team-card-role-hover {
+  /* color will be set via style prop */
+  transition: color 0.3s ease;
+}
+
+.team-card-bio {
+  /* color will be set via style prop */
+  transition: color 0.3s ease;
+}
+
+.team-card-bio-hover {
+  /* color will be set via style prop */
+  transition: color 0.3s ease;
+}
+
+.team-card-link {
+  /* color will be set via style prop */
+  transition: color 0.3s ease;
+}
+
+.team-card-link-hover {
+  /* color will be set via style prop */
+  transition: color 0.3s ease;
+}
+
+.team-card-depth {
+  /* background and filter will be set via style prop */
+}
+
+.gradient-linear-cyan-mag-yellow {
+  background: linear-gradient(135deg, var(--psychedelic-cyan), var(--psychedelic-magenta), var(--psychedelic-yellow));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
