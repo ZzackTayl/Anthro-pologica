@@ -70,6 +70,7 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
   const currentProject = projects[currentIndex];
   const currentMedia = projectMedia[currentProject.id];
   const isCaseStudyAvailable = currentProject.caseStudyAvailable !== false;
+  const projectThemeClass = `project-theme-${currentProject.id}`;
 
   return (
     <section id="projects-section" className="relative py-32 px-6 pb-40 overflow-hidden">
@@ -154,12 +155,7 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
           >
             <h2 className="groovy-text text-6xl md:text-8xl mb-6">
               <motion.span
-                style={{
-                  background: 'linear-gradient(135deg, var(--psychedelic-orange), var(--psychedelic-pink), var(--psychedelic-cyan))',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
+                className="carousel-heading-gradient"
                 animate={enableMotion ? {
                   backgroundPosition: ['0% 0%', '100% 100%'],
                 } : undefined}
@@ -177,7 +173,7 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
             </p>
           </motion.div>
 
-          <div className="relative max-w-5xl mx-auto" style={enableMotion ? { perspective: '2000px' } : {}}>
+          <div className="relative max-w-5xl mx-auto carousel-perspective">
           <AnimatePresence initial={false} custom={direction} mode={enableMotion ? 'wait' : undefined}>
             <motion.div
               key={currentIndex}
@@ -194,24 +190,15 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
                     }
                   : { duration: 0 }
               }
-              className="relative"
-              style={enableMotion ? {
-                transformStyle: 'preserve-3d',
-              } : {}}
+              className="relative preserve-3d"
             >
               <div
-                className="relative p-8 md:p-12 rounded-3xl overflow-hidden"
-                style={{
-                  background: 'rgba(26, 15, 46, 0.8)',
-                  backdropFilter: 'blur(20px)',
-                  border: `3px solid ${currentProject.color}`,
-                }}
+                className={`relative p-8 md:p-12 rounded-3xl overflow-hidden project-card ${projectThemeClass}`}
               >
                 {/* Gradient overlay */}
                 {enableMotion ? (
                   <motion.div
-                    className="absolute inset-0 opacity-20"
-                    style={{ background: currentProject.gradient }}
+                    className="absolute inset-0 opacity-20 project-card-overlay"
                     animate={{
                       backgroundPosition: ['0% 0%', '100% 100%'],
                     }}
@@ -223,8 +210,7 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
                   />
                 ) : (
                   <div
-                    className="absolute inset-0 opacity-20"
-                    style={{ background: currentProject.gradient }}
+                    className="absolute inset-0 opacity-20 project-card-overlay"
                     aria-hidden
                   />
                 )}
@@ -237,17 +223,12 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
                     {currentProject.tags?.length ? (
                       <div className="flex flex-wrap gap-2 justify-center">
                         {currentProject.tags.slice(0, 3).map((tag, i) => (
-                          <span
-                            key={`top-badge-${i}`}
-                            className="px-3 py-1 rounded-full text-sm border backdrop-blur-sm"
-                            style={{
-                              borderColor: currentProject.color,
-                              color: currentProject.color,
-                              background: 'rgba(255,255,255,0.06)',
-                            }}
-                          >
-                            {tag}
-                          </span>
+                            <span
+                              key={`top-badge-${i}`}
+                              className={`px-3 py-1 rounded-full text-sm border-2 project-badge ${projectThemeClass}`}
+                            >
+                              {tag}
+                            </span>
                         ))}
                       </div>
                     ) : null}
@@ -257,11 +238,7 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
                       initial={enableMotion ? { opacity: 0, x: -50 } : false}
                       animate={enableMotion ? { opacity: 1, x: 0 } : undefined}
                       transition={enableMotion ? { delay: 0.2 } : undefined}
-                      className="relative aspect-video rounded-xl overflow-hidden"
-                      style={{
-                        border: `2px solid ${currentProject.color}`,
-                        background: 'rgba(0, 0, 0, 0.4)',
-                      }}
+                      className={`relative aspect-video rounded-xl overflow-hidden project-media-frame ${projectThemeClass}`}
                     >
                       {currentMedia?.type === 'video' ? (
                         <iframe
@@ -270,7 +247,6 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
                           className="absolute inset-0 h-full w-full"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowFullScreen
-                          loading="lazy"
                         />
                       ) : (
                         <ImageWithFallback
@@ -282,8 +258,7 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
                       )}
                       {currentMedia?.type === 'image' && enableMotion && (
                         <motion.div
-                          className="absolute inset-0"
-                          style={{ background: currentProject.gradient, mixBlendMode: 'overlay' }}
+                          className="absolute inset-0 project-media-overlay"
                           animate={{
                             opacity: [0.3, 0.6, 0.3],
                           }}
@@ -300,12 +275,7 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
                     {currentProject.tags?.length > 3 && currentProject.tags[3] && (
                       <div className="text-center">
                         <span
-                          className="inline-block px-3 py-1 rounded-full text-sm border backdrop-blur-sm"
-                          style={{
-                            borderColor: currentProject.color,
-                            color: currentProject.color,
-                            background: 'rgba(255,255,255,0.06)',
-                          }}
+                          className={`inline-block px-3 py-1 rounded-full text-sm border-2 project-badge ${projectThemeClass}`}
                         >
                           {currentProject.tags[3]}
                         </span>
@@ -319,7 +289,7 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
                     animate={enableMotion ? { opacity: 1, x: 0 } : undefined}
                     transition={enableMotion ? { delay: 0.3 } : undefined}
                   >
-                    <h3 className="groovy-text text-4xl md:text-5xl mb-3" style={{ color: currentProject.color }}>
+                    <h3 className={`groovy-text text-4xl md:text-5xl mb-3 project-title ${projectThemeClass}`}>
                       {currentProject.title}
                     </h3>
 
@@ -336,16 +306,11 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
                           {currentProject.tags.slice(4).map((tag, i) => (
                             <div
                               key={`context-${i}`}
-                              className="flex items-start gap-3 px-3 py-2 rounded-xl shadow-md backdrop-blur-sm"
-                              style={{
-                                background: 'rgba(0,0,0,0.25)',
-                                border: `1px solid ${currentProject.color}`,
-                                boxShadow: `0 8px 24px -14px ${currentProject.color}`,
-                              }}
+                              className={`flex items-start gap-3 px-3 py-2 rounded-xl shadow-md backdrop-blur-sm project-context-card ${projectThemeClass}`}
                             >
                               <span
                                 className="mt-1 inline-block w-2 h-2 rounded-full shrink-0"
-                                style={{ background: currentProject.color }}
+                                className={`mt-1 inline-block w-2 h-2 rounded-full shrink-0 project-context-dot ${projectThemeClass}`}
                                 aria-hidden
                               />
                               <span className="text-sm leading-relaxed">{tag}</span>
@@ -358,11 +323,7 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
                     {isCaseStudyAvailable ? (
                       <motion.button
                         onClick={() => onProjectClick(currentProject.id)}
-                        className="button-wave flex items-center gap-2 px-6 py-3 rounded-full"
-                        style={{
-                          background: currentProject.gradient,
-                          color: '#000',
-                        }}
+                        className={`button-wave flex items-center gap-2 px-6 py-3 rounded-full project-cta ${projectThemeClass}`}
                         whileHover={enableMotion && canHover ? { scale: 1.05 } : undefined}
                         whileTap={enableMotion ? { scale: 0.95 } : undefined}
                         transition={enableMotion ? { duration: 0.3 } : undefined}
@@ -375,11 +336,7 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
                         href={currentProject.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="button-wave flex items-center gap-2 px-6 py-3 rounded-full"
-                        style={{
-                          background: currentProject.gradient,
-                          color: '#000',
-                        }}
+                        className={`button-wave flex items-center gap-2 px-6 py-3 rounded-full project-cta ${projectThemeClass}`}
                         whileHover={enableMotion && canHover ? { scale: 1.05 } : undefined}
                         whileTap={enableMotion ? { scale: 0.95 } : undefined}
                         transition={enableMotion ? { duration: 0.3 } : undefined}
@@ -398,11 +355,7 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
           <div className="flex justify-center gap-4 mt-8">
             <motion.button
               onClick={() => paginate(-1)}
-              className="button-wave p-5 rounded-full min-w-[48px] min-h-[48px]"
-              style={{
-                background: 'rgba(26, 15, 46, 0.8)',
-                border: '2px solid var(--psychedelic-cyan)',
-              }}
+              className="button-wave p-5 rounded-full min-w-[48px] min-h-[48px] carousel-nav-button carousel-nav-prev"
               aria-label="View previous project"
               whileHover={enableMotion && canHover ? { scale: 1.05 } : undefined}
               whileTap={enableMotion ? { scale: 0.9 } : undefined}
@@ -413,11 +366,7 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
 
             <motion.button
               onClick={() => paginate(1)}
-              className="button-wave p-5 rounded-full min-w-[48px] min-h-[48px]"
-              style={{
-                background: 'rgba(26, 15, 46, 0.8)',
-                border: '2px solid var(--psychedelic-magenta)',
-              }}
+              className="button-wave p-5 rounded-full min-w-[48px] min-h-[48px] carousel-nav-button carousel-nav-next"
               aria-label="View next project"
               whileHover={enableMotion && canHover ? { scale: 1.05 } : undefined}
               whileTap={enableMotion ? { scale: 0.9 } : undefined}
@@ -436,7 +385,7 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
                   setDirection(i > currentIndex ? 1 : -1);
                   setCurrentIndex(i);
                 }}
-                className="p-3 rounded-full min-w-[44px] min-h-[44px] flex items-center justify-center"
+                className={`p-3 rounded-full min-w-[44px] min-h-[44px] flex items-center justify-center project-pagination-dot project-theme-${projects[i].id} ${i === currentIndex ? 'is-active' : ''}`}
                 aria-label={`Go to project ${i + 1} of ${projects.length}: ${projects[i].title}`}
                 aria-current={i === currentIndex ? 'true' : 'false'}
                 whileHover={enableMotion && canHover ? { scale: 1.5 } : undefined}
@@ -451,10 +400,8 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
                 }
               >
                 <span
-                  className="w-3 h-3 rounded-full"
-                  style={{
-                    background: i === currentIndex ? projects[i].color : 'rgba(255, 255, 255, 0.3)',
-                  }}
+                  className="w-3 h-3 rounded-full project-dot"
+                  data-active={i === currentIndex}
                 />
               </motion.button>
             ))}

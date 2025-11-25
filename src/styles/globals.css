@@ -529,3 +529,96 @@ select:focus-visible {
   outline: 3px solid var(--psychedelic-cyan);
   outline-offset: 4px;
 }
+
+/* Projects carousel theming */
+.carousel-heading-gradient {
+  background: linear-gradient(135deg, var(--psychedelic-orange), var(--psychedelic-pink), var(--psychedelic-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.carousel-perspective {
+  perspective: 2000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.project-card {
+  background: rgba(26, 15, 46, 0.8);
+  backdrop-filter: blur(20px);
+  border: 3px solid var(--project-color, var(--psychedelic-magenta));
+}
+
+.project-card-overlay {
+  background: var(--project-gradient, var(--psychedelic-magenta));
+}
+
+.project-media-frame {
+  border: 2px solid var(--project-color, var(--psychedelic-magenta));
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.project-media-overlay {
+  background: var(--project-gradient, var(--psychedelic-magenta));
+  mix-blend-mode: overlay;
+}
+
+.project-badge {
+  border-color: var(--project-color, var(--psychedelic-magenta));
+  color: #1a0f2e;
+  background: #ffffff;
+}
+
+.project-title {
+  color: var(--project-color, var(--psychedelic-magenta));
+}
+
+.project-context-card {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid #ffffff;
+  box-shadow: 0 8px 24px -14px var(--project-color, var(--psychedelic-magenta));
+}
+
+.project-context-dot {
+  background: var(--project-color, var(--psychedelic-magenta));
+}
+
+.project-cta {
+  background: var(--project-gradient, var(--psychedelic-magenta));
+  color: #000;
+  border: 2px solid #ffffff;
+}
+
+.project-pagination-dot .project-dot {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.project-pagination-dot.is-active .project-dot {
+  background: var(--project-color, var(--psychedelic-magenta));
+}
+
+.carousel-nav-button {
+  background: rgba(26, 15, 46, 0.8);
+}
+
+.carousel-nav-prev {
+  border: 2px solid var(--psychedelic-cyan);
+}
+
+.carousel-nav-next {
+  border: 2px solid var(--psychedelic-magenta);
+}
+
+.project-theme-myorbit {
+  --project-color: var(--psychedelic-magenta);
+  --project-gradient: linear-gradient(135deg, var(--psychedelic-magenta), var(--psychedelic-purple));
+}
+
+.project-theme-spoonsaver {
+  --project-color: var(--psychedelic-cyan);
+  --project-gradient: linear-gradient(135deg, var(--psychedelic-cyan), var(--psychedelic-lime));
+}
