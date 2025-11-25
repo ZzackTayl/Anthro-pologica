@@ -52,7 +52,7 @@ Always put your users first. Understand their needs, behaviors, and pain points 
 Maintain consistency in design patterns, terminology, and interactions throughout your product.
 
 ### 3. Accessibility
-Design for everyone, including users with disabilities. Accessibility is not optional—it's essential.
+Design for everyone, including users with disabilities. Accessibility is not optional: it's essential.
 
 ### 4. Clarity
 Make your interface intuitive. Users should understand how to accomplish their goals without confusion.
@@ -326,7 +326,7 @@ Every component should be:
 
 ## Why Accessibility Matters
 
-1 in 4 adults in the US has a disability. Making your product accessible isn't just the right thing to do—it's good business and often legally required.
+1 in 4 adults in the US has a disability. Making your product accessible isn't just the right thing to do: it's good business and often legally required.
 
 ## The Four Principles (POUR)
 

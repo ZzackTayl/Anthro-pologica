@@ -170,7 +170,7 @@ export function HeroSection({ enableMotion = true }: HeroSectionProps) {
       )}
 
       {/* Main content */}
-      <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
+      <div className="relative z-10 text-center px-6 max-w-6xl mx-auto pb-16 md:pb-24">
         <motion.div
           initial={enableMotion ? { opacity: 0, y: 50 } : false}
           animate={enableMotion ? { opacity: 1, y: 0 } : undefined}

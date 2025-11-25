@@ -72,7 +72,7 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
   const isCaseStudyAvailable = currentProject.caseStudyAvailable !== false;
 
   return (
-    <section id="projects-section" className="relative py-32 px-6 overflow-hidden">
+    <section id="projects-section" className="relative py-32 px-6 pb-40 overflow-hidden">
       {/* Flowing background waves - only animate if motion enabled */}
       {enableMotion ? (
         <div className="absolute inset-0 overflow-hidden opacity-20">
@@ -285,20 +285,44 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
                       {currentProject.description}
                     </p>
 
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {currentProject.tags.map((tag, i) => (
-                        <span
-                          key={i}
-                          className="px-3 py-1 rounded-full text-sm border"
-                          style={{
-                            borderColor: currentProject.color,
-                            color: currentProject.color,
-                          }}
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+                    {currentProject.tags?.length ? (
+                      <div className="space-y-3 mb-6">
+                        {/* Primary quick-glance tags */}
+                        <div className="flex flex-wrap gap-2">
+                          {currentProject.tags.slice(0, 3).map((tag, i) => (
+                            <span
+                              key={`primary-${i}`}
+                              className="px-3 py-1 rounded-full text-sm border"
+                              style={{
+                                borderColor: currentProject.color,
+                                color: currentProject.color,
+                              }}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+
+                        {/* Context badges in a grid for balance */}
+                        {currentProject.tags.length > 3 && (
+                          <div className="grid gap-2 md:grid-cols-2">
+                            {currentProject.tags.slice(3).map((tag, i) => (
+                              <span
+                                key={`context-${i}`}
+                                className="px-3 py-2 rounded-full text-sm"
+                                style={{
+                                  background: currentProject.gradient,
+                                  color: '#000',
+                                  border: `1px solid ${currentProject.color}`,
+                                }}
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ) : null}
 
                     {isCaseStudyAvailable ? (
                       <motion.button

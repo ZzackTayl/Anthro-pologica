@@ -86,33 +86,12 @@ export function ProjectDetailPage({ project, enableMotion = true }: ProjectDetai
           )}
         </div>
 
-        <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
+        <div className="relative z-10 text-center px-6 max-w-6xl mx-auto pb-16 md:pb-24">
           <motion.div
             initial={enableMotion ? { opacity: 0, y: 50 } : false}
             animate={enableMotion ? { opacity: 1, y: 0 } : undefined}
             transition={enableMotion ? { duration: 1 } : undefined}
           >
-            <motion.div
-              className="inline-block px-6 py-2 rounded-full mb-6"
-              style={{ background: project.color }}
-              animate={
-                enableMotion
-                  ? {
-                      boxShadow: [
-                        `0 0 20px ${project.color}`,
-                        `0 0 40px ${project.color}`,
-                        `0 0 20px ${project.color}`,
-                      ],
-                    }
-                  : {
-                      boxShadow: `0 0 20px ${project.color}`,
-                    }
-              }
-              transition={enableMotion ? { duration: 2, repeat: Infinity } : undefined}
-            >
-              <span className="text-black">{project.status}</span>
-            </motion.div>
-
             <h1
               className="groovy-text mb-6"
               style={{

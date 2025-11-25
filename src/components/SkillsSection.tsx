@@ -28,7 +28,7 @@ const skills = [
   {
     icon: Zap,
     title: 'Neurodivergent Design',
-    description: 'Inclusive experiences celebrating cognitive diversity',
+    description: 'We diverge deeper, mapping the system, then converge with structure to land the right solution',
     color: 'var(--psychedelic-yellow)',
     details: ['Accessibility First', 'ADHD-Friendly UI', 'Sensory Considerations', 'Flexible Interactions'],
   },

@@ -74,7 +74,7 @@ export function ContactSection({ enableMotion = true }: ContactSectionProps) {
       event.currentTarget.reset();
     } catch (error) {
       console.error('Submission error:', error);
-      let errorMessage = 'Sorry—something went wrong. Please try again in a moment.';
+      let errorMessage = 'Sorry, something went wrong. Please try again in a moment.';
       if (error instanceof Error) {
         errorMessage = error.message;
       }

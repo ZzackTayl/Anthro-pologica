@@ -114,7 +114,7 @@ export function PhilosophySection({ enableMotion = true }: PhilosophySectionProp
               color: 'var(--psychedelic-yellow)',
             },
             {
-              title: 'Intentional AI Use',
+              title: 'Intentional AI',
               description: 'We approach AI with care and responsibility. Every AI implementation is thoughtfully considered, ethically evaluated, and designed to enhance, never replace, human judgment and creativity.',
               color: 'var(--psychedelic-lime)',
             },
