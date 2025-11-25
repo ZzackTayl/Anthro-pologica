@@ -135,39 +135,49 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
       )}
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        <motion.div
-          initial={enableMotion ? { opacity: 0, y: 50 } : false}
-          whileInView={enableMotion ? { opacity: 1, y: 0 } : undefined}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={enableMotion ? { duration: 1 } : undefined}
-          className="text-center mb-20"
+        <div
+          role="region"
+          aria-label="Projects carousel"
+          aria-live="polite"
+          aria-atomic="false"
         >
-          <h2 className="groovy-text text-6xl md:text-8xl mb-6">
-            <motion.span
-              style={{
-                background: 'linear-gradient(135deg, var(--psychedelic-orange), var(--psychedelic-pink), var(--psychedelic-cyan))',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-              animate={enableMotion ? {
-                backgroundPosition: ['0% 0%', '100% 100%'],
-              } : undefined}
-              transition={enableMotion ? {
-                duration: 12,
-                repeat: Infinity,
-                ease: 'linear',
-              } : undefined}
-            >
-              Current Projects
-            </motion.span>
-          </h2>
-          <p className="text-xl max-w-2xl mx-auto opacity-90">
-            Explore our active projects pushing the boundaries of UX design
-          </p>
-        </motion.div>
+          <div className="sr-only" aria-live="polite" aria-atomic="true">
+            Viewing project {currentIndex + 1} of {projects.length}: {currentProject.title}
+          </div>
 
-        <div className="relative max-w-5xl mx-auto" style={enableMotion ? { perspective: '2000px' } : {}}>
+          <motion.div
+            initial={enableMotion ? { opacity: 0, y: 50 } : false}
+            whileInView={enableMotion ? { opacity: 1, y: 0 } : undefined}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={enableMotion ? { duration: 1 } : undefined}
+            className="text-center mb-20"
+          >
+            <h2 className="groovy-text text-6xl md:text-8xl mb-6">
+              <motion.span
+                style={{
+                  background: 'linear-gradient(135deg, var(--psychedelic-orange), var(--psychedelic-pink), var(--psychedelic-cyan))',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+                animate={enableMotion ? {
+                  backgroundPosition: ['0% 0%', '100% 100%'],
+                } : undefined}
+                transition={enableMotion ? {
+                  duration: 12,
+                  repeat: Infinity,
+                  ease: 'linear',
+                } : undefined}
+              >
+                Current Projects
+              </motion.span>
+            </h2>
+            <p className="text-xl max-w-2xl mx-auto opacity-90">
+              Explore our active projects pushing the boundaries of UX design
+            </p>
+          </motion.div>
+
+          <div className="relative max-w-5xl mx-auto" style={enableMotion ? { perspective: '2000px' } : {}}>
           <AnimatePresence initial={false} custom={direction} mode={enableMotion ? 'wait' : undefined}>
             <motion.div
               key={currentIndex}
@@ -221,49 +231,87 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
 
                 {/* Content */}
                 <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
-                  {/* Left: Image */}
-                  <motion.div
-                    initial={enableMotion ? { opacity: 0, x: -50 } : false}
-                    animate={enableMotion ? { opacity: 1, x: 0 } : undefined}
-                    transition={enableMotion ? { delay: 0.2 } : undefined}
-                    className="relative aspect-video rounded-xl overflow-hidden"
-                    style={{
-                      border: `2px solid ${currentProject.color}`,
-                      background: 'rgba(0, 0, 0, 0.4)',
-                    }}
-                  >
-                    {currentMedia?.type === 'video' ? (
-                      <iframe
-                        title={`${currentProject.title} preview`}
-                        src={currentMedia.src}
-                        className="absolute inset-0 h-full w-full"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        loading="lazy"
-                      />
-                    ) : (
-                      <ImageWithFallback
-                        src={currentMedia?.src}
-                        alt={currentProject.title}
-                        className="w-full h-full object-cover"
-                        loading="eager"
-                      />
+                  {/* Left: Image and badges */}
+                  <div className="space-y-4">
+                    {/* Badges ABOVE image - first 3 tags */}
+                    {currentProject.tags?.length ? (
+                      <div className="flex flex-wrap gap-2 justify-center">
+                        {currentProject.tags.slice(0, 3).map((tag, i) => (
+                          <span
+                            key={`top-badge-${i}`}
+                            className="px-3 py-1 rounded-full text-sm border backdrop-blur-sm"
+                            style={{
+                              borderColor: currentProject.color,
+                              color: currentProject.color,
+                              background: 'rgba(255,255,255,0.06)',
+                            }}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    ) : null}
+
+                    {/* Image */}
+                    <motion.div
+                      initial={enableMotion ? { opacity: 0, x: -50 } : false}
+                      animate={enableMotion ? { opacity: 1, x: 0 } : undefined}
+                      transition={enableMotion ? { delay: 0.2 } : undefined}
+                      className="relative aspect-video rounded-xl overflow-hidden"
+                      style={{
+                        border: `2px solid ${currentProject.color}`,
+                        background: 'rgba(0, 0, 0, 0.4)',
+                      }}
+                    >
+                      {currentMedia?.type === 'video' ? (
+                        <iframe
+                          title={`${currentProject.title} preview`}
+                          src={currentMedia.src}
+                          className="absolute inset-0 h-full w-full"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          loading="lazy"
+                        />
+                      ) : (
+                        <ImageWithFallback
+                          src={currentMedia?.src}
+                          alt={currentProject.alt || `Screenshot of ${currentProject.title} project`}
+                          className="w-full h-full object-cover"
+                          loading="eager"
+                        />
+                      )}
+                      {currentMedia?.type === 'image' && enableMotion && (
+                        <motion.div
+                          className="absolute inset-0"
+                          style={{ background: currentProject.gradient, mixBlendMode: 'overlay' }}
+                          animate={{
+                            opacity: [0.3, 0.6, 0.3],
+                          }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: 'easeInOut',
+                          }}
+                        />
+                      )}
+                    </motion.div>
+
+                    {/* Badge BELOW image - "Launching soon" tag (index 3) */}
+                    {currentProject.tags?.length > 3 && currentProject.tags[3] && (
+                      <div className="text-center">
+                        <span
+                          className="inline-block px-3 py-1 rounded-full text-sm border backdrop-blur-sm"
+                          style={{
+                            borderColor: currentProject.color,
+                            color: currentProject.color,
+                            background: 'rgba(255,255,255,0.06)',
+                          }}
+                        >
+                          {currentProject.tags[3]}
+                        </span>
+                      </div>
                     )}
-                    {currentMedia?.type === 'image' && enableMotion && (
-                      <motion.div
-                        className="absolute inset-0"
-                        style={{ background: currentProject.gradient, mixBlendMode: 'overlay' }}
-                        animate={{
-                          opacity: [0.3, 0.6, 0.3],
-                        }}
-                        transition={{
-                          duration: 3,
-                          repeat: Infinity,
-                          ease: 'easeInOut',
-                        }}
-                      />
-                    )}
-                  </motion.div>
+                  </div>
 
                   {/* Right: Details */}
                   <motion.div
@@ -271,10 +319,6 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
                     animate={enableMotion ? { opacity: 1, x: 0 } : undefined}
                     transition={enableMotion ? { delay: 0.3 } : undefined}
                   >
-                    <div className="inline-block px-4 py-2 rounded-full mb-4" style={{ background: currentProject.color }}>
-                      <span className="text-sm text-black">{currentProject.status}</span>
-                    </div>
-
                     <h3 className="groovy-text text-4xl md:text-5xl mb-3" style={{ color: currentProject.color }}>
                       {currentProject.title}
                     </h3>
@@ -285,44 +329,31 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
                       {currentProject.description}
                     </p>
 
-                    {currentProject.tags?.length ? (
-                      <div className="space-y-3 mb-6">
-                        {/* Primary quick-glance tags */}
+                    {/* Context cards - skip first 4 tags (3 badges + 1 launching soon) */}
+                    {currentProject.tags?.length > 4 && (
+                      <div className="space-y-3 mb-8">
                         <div className="flex flex-wrap gap-2">
-                          {currentProject.tags.slice(0, 3).map((tag, i) => (
-                            <span
-                              key={`primary-${i}`}
-                              className="px-3 py-1 rounded-full text-sm border"
+                          {currentProject.tags.slice(4).map((tag, i) => (
+                            <div
+                              key={`context-${i}`}
+                              className="flex items-start gap-3 px-3 py-2 rounded-xl shadow-md backdrop-blur-sm"
                               style={{
-                                borderColor: currentProject.color,
-                                color: currentProject.color,
+                                background: 'rgba(0,0,0,0.25)',
+                                border: `1px solid ${currentProject.color}`,
+                                boxShadow: `0 8px 24px -14px ${currentProject.color}`,
                               }}
                             >
-                              {tag}
-                            </span>
+                              <span
+                                className="mt-1 inline-block w-2 h-2 rounded-full shrink-0"
+                                style={{ background: currentProject.color }}
+                                aria-hidden
+                              />
+                              <span className="text-sm leading-relaxed">{tag}</span>
+                            </div>
                           ))}
                         </div>
-
-                        {/* Context badges in a grid for balance */}
-                        {currentProject.tags.length > 3 && (
-                          <div className="grid gap-2 md:grid-cols-2">
-                            {currentProject.tags.slice(3).map((tag, i) => (
-                              <span
-                                key={`context-${i}`}
-                                className="px-3 py-2 rounded-full text-sm"
-                                style={{
-                                  background: currentProject.gradient,
-                                  color: '#000',
-                                  border: `1px solid ${currentProject.color}`,
-                                }}
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                        )}
                       </div>
-                    ) : null}
+                    )}
 
                     {isCaseStudyAvailable ? (
                       <motion.button
@@ -367,7 +398,7 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
           <div className="flex justify-center gap-4 mt-8">
             <motion.button
               onClick={() => paginate(-1)}
-              className="button-wave p-4 rounded-full"
+              className="button-wave p-5 rounded-full min-w-[48px] min-h-[48px]"
               style={{
                 background: 'rgba(26, 15, 46, 0.8)',
                 border: '2px solid var(--psychedelic-cyan)',
@@ -382,7 +413,7 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
 
             <motion.button
               onClick={() => paginate(1)}
-              className="button-wave p-4 rounded-full"
+              className="button-wave p-5 rounded-full min-w-[48px] min-h-[48px]"
               style={{
                 background: 'rgba(26, 15, 46, 0.8)',
                 border: '2px solid var(--psychedelic-magenta)',
@@ -405,12 +436,9 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
                   setDirection(i > currentIndex ? 1 : -1);
                   setCurrentIndex(i);
                 }}
-                className="w-3 h-3 rounded-full"
-                style={{
-                  background: i === currentIndex ? projects[i].color : 'rgba(255, 255, 255, 0.3)',
-                }}
-                aria-label={`Go to project ${i + 1} of ${projects.length}`}
-                aria-current={i === currentIndex ? 'page' : undefined}
+                className="p-3 rounded-full min-w-[44px] min-h-[44px] flex items-center justify-center"
+                aria-label={`Go to project ${i + 1} of ${projects.length}: ${projects[i].title}`}
+                aria-current={i === currentIndex ? 'true' : 'false'}
                 whileHover={enableMotion && canHover ? { scale: 1.5 } : undefined}
                 animate={
                   enableMotion
@@ -421,9 +449,17 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
                         scale: 1,
                       }
                 }
-              />
+              >
+                <span
+                  className="w-3 h-3 rounded-full"
+                  style={{
+                    background: i === currentIndex ? projects[i].color : 'rgba(255, 255, 255, 0.3)',
+                  }}
+                />
+              </motion.button>
             ))}
           </div>
+        </div>
         </div>
       </div>
     </section>

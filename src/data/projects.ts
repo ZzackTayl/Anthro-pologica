@@ -3,6 +3,7 @@ export interface Project {
   title: string;
   category: string;
   description: string;
+  alt?: string;
   color: string;
   gradient: string;
   tags: string[];
@@ -26,6 +27,7 @@ export const projects: Project[] = [
     title: 'MyOrbit',
     category: 'Less time planning. More time with those that matter.',
     description: 'Signal nuanced availability, align calendars with friends, and let an AI assistant reschedule on your terms.',
+    alt: 'Screenshot of MyOrbit calendar assistant showing vibrant gradient cards for availability signals and scheduling automation',
     color: 'var(--psychedelic-magenta)',
     gradient: 'linear-gradient(135deg, var(--psychedelic-magenta), var(--psychedelic-purple))',
     tags: [
@@ -65,6 +67,7 @@ export const projects: Project[] = [
     title: 'SpoonSaver',
     category: 'Energy Tracking & Support App',
     description: 'Track physical, social, cognitive, sensory, and emotional energy while your personal AI health guide learns your patterns.',
+    alt: 'Dashboard mock of SpoonSaver energy tracking app with colorful gauges for physical, social, cognitive, sensory, and emotional energy levels',
     color: 'var(--psychedelic-cyan)',
     gradient: 'linear-gradient(135deg, var(--psychedelic-cyan), var(--psychedelic-lime))',
     tags: ['AI Health', 'Accessibility', 'Self-Management'],

@@ -106,6 +106,14 @@ export default function App() {
 
   const selectedProject = selectedProjectId ? getProjectById(selectedProjectId) : null;
 
+  useEffect(() => {
+    if (currentRoute === 'project' && selectedProject) {
+      document.title = `${selectedProject.title} - Anthro-pologica UX`;
+    } else {
+      document.title = 'Anthro-pologica UX - Human-Centered Design & Neurodivergent Insight';
+    }
+  }, [currentRoute, selectedProject]);
+
   return (
     <MotionConfig reducedMotion={accessibilityPrefs.motion ? 'never' : 'always'}>
       <>
@@ -121,62 +129,76 @@ export default function App() {
       </Suspense>
       
       <div className="min-h-screen bg-background text-foreground antialiased">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:rounded-lg"
+          style={{
+            background: 'var(--psychedelic-cyan)',
+            color: '#000',
+            fontWeight: 'bold',
+          }}
+        >
+          Skip to main content
+        </a>
+
         <Navigation 
           onNavigateHome={handleNavigateHome} 
           onOpenPersonalize={handleOpenPersonalize}
           isHomePage={currentRoute === 'home'}
           enableMotion={motionEnabled}
         />
-        
-        <AnimatePresence mode="wait">
-          {currentRoute === 'home' ? (
-            <motion.div
-              key="home"
-              initial={motionEnabled ? { opacity: 0 } : false}
-              animate={{ opacity: 1 }}
-              exit={motionEnabled ? { opacity: 0 } : {}}
-              transition={motionEnabled ? { duration: 0.5 } : { duration: 0 }}
-            >
-              <HeroSection enableMotion={motionEnabled} />
-              <Suspense fallback={<SectionSkeleton />}>
-                <PhilosophySection enableMotion={motionEnabled} />
-              </Suspense>
-              <Suspense fallback={<SectionSkeleton />}>
-                <TeamSection enableMotion={motionEnabled} />
-              </Suspense>
-              <Suspense fallback={<SectionSkeleton height="20rem" />}>
-                <SkillsSection enableMotion={motionEnabled} />
-              </Suspense>
-              <Suspense fallback={<SectionSkeleton height="28rem" />}>
-                <ProjectsCarousel 
-                  onProjectClick={handleProjectClick}
-                  enableMotion={motionEnabled}
-                />
-              </Suspense>
-              <Suspense fallback={<SectionSkeleton />}>
-                <ContactSection enableMotion={motionEnabled} />
-              </Suspense>
-              <Suspense fallback={<SectionSkeleton height="12rem" />}>
-                <Footer 
-                  enableMotion={motionEnabled}
-                  onOpenAccessibilitySettings={handleOpenPersonalize}
-                />
-              </Suspense>
-            </motion.div>
-          ) : currentRoute === 'project' && selectedProject ? (
-            <motion.div
-              key="project"
-              initial={motionEnabled ? { opacity: 0 } : false}
-              animate={{ opacity: 1 }}
-              exit={motionEnabled ? { opacity: 0 } : {}}
-              transition={motionEnabled ? { duration: 0.5 } : { duration: 0 }}
-            >
-              <Suspense fallback={<SectionSkeleton height="32rem" />}>
-                <ProjectDetailPage project={selectedProject} enableMotion={motionEnabled} />
-              </Suspense>
-            </motion.div>
-          ) : null}
-        </AnimatePresence>
+
+        <main id="main-content">
+          <AnimatePresence mode="wait">
+            {currentRoute === 'home' ? (
+              <motion.div
+                key="home"
+                initial={motionEnabled ? { opacity: 0 } : false}
+                animate={{ opacity: 1 }}
+                exit={motionEnabled ? { opacity: 0 } : {}}
+                transition={motionEnabled ? { duration: 0.5 } : { duration: 0 }}
+              >
+                <HeroSection enableMotion={motionEnabled} />
+                <Suspense fallback={<SectionSkeleton />}>
+                  <PhilosophySection enableMotion={motionEnabled} />
+                </Suspense>
+                <Suspense fallback={<SectionSkeleton />}>
+                  <TeamSection enableMotion={motionEnabled} />
+                </Suspense>
+                <Suspense fallback={<SectionSkeleton height="20rem" />}>
+                  <SkillsSection enableMotion={motionEnabled} />
+                </Suspense>
+                <Suspense fallback={<SectionSkeleton height="28rem" />}>
+                  <ProjectsCarousel 
+                    onProjectClick={handleProjectClick}
+                    enableMotion={motionEnabled}
+                  />
+                </Suspense>
+                <Suspense fallback={<SectionSkeleton />}>
+                  <ContactSection enableMotion={motionEnabled} />
+                </Suspense>
+                <Suspense fallback={<SectionSkeleton height="12rem" />}>
+                  <Footer 
+                    enableMotion={motionEnabled}
+                    onOpenAccessibilitySettings={handleOpenPersonalize}
+                  />
+                </Suspense>
+              </motion.div>
+            ) : currentRoute === 'project' && selectedProject ? (
+              <motion.div
+                key="project"
+                initial={motionEnabled ? { opacity: 0 } : false}
+                animate={{ opacity: 1 }}
+                exit={motionEnabled ? { opacity: 0 } : {}}
+                transition={motionEnabled ? { duration: 0.5 } : { duration: 0 }}
+              >
+                <Suspense fallback={<SectionSkeleton height="32rem" />}>
+                  <ProjectDetailPage project={selectedProject} enableMotion={motionEnabled} />
+                </Suspense>
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
+        </main>
       </div>
       </>
     </MotionConfig>

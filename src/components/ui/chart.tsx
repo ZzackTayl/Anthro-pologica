@@ -2,8 +2,6 @@
 
 import * as React from "react";
 import * as RechartsPrimitive from "recharts";
-// Types used for payload mapping
-import type { NameType as _NameType, Payload as _Payload } from "recharts/types/component/DefaultTooltipContent";
 
 import { cn } from "./utils";
 

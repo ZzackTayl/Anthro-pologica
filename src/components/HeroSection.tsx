@@ -241,20 +241,22 @@ export function HeroSection({ enableMotion = true }: HeroSectionProps) {
           transition={enableMotion ? { duration: 1, delay: 0.6 } : undefined}
           className="mt-12"
         >
-          <motion.button
-            onClick={() => {
+          <motion.a
+            href="#projects-section"
+            onClick={(e) => {
+              e.preventDefault();
               const projectsSection = document.querySelector('#projects-section');
               if (projectsSection) {
                 projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }
             }}
-            className="button-wave relative px-8 py-4 overflow-hidden group cursor-pointer hero-button"
+            className="button-wave relative px-8 py-4 overflow-hidden group cursor-pointer hero-button inline-block text-center no-underline"
             whileHover={enableMotion && canHover ? { scale: 1.05 } : undefined}
             whileTap={enableMotion ? { scale: 0.95 } : undefined}
             transition={enableMotion ? { duration: 0.3 } : undefined}
           >
             <span className="relative z-10 groovy-text text-2xl">Explore Our Universe</span>
-          </motion.button>
+          </motion.a>
         </motion.div>
       </div>
     </section>

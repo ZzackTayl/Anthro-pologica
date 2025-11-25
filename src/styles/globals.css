@@ -47,7 +47,7 @@
   --secondary: #00ffff;
   --secondary-foreground: #0a0514;
   --muted: #2d1b4e;
-  --muted-foreground: #a78bca;
+  --muted-foreground: #c8a8e8;
   --accent: #ffff00;
   --accent-foreground: #0a0514;
   --destructive: #d4183d;
@@ -75,13 +75,13 @@
   --sidebar-ring: oklch(0.708 0 0);
   
   /* Psychedelic Colors */
-  --psychedelic-purple: #a020f0;
-  --psychedelic-pink: #ff1493;
-  --psychedelic-orange: #ff6b35;
-  --psychedelic-yellow: #ffd700;
-  --psychedelic-cyan: #00ffff;
-  --psychedelic-lime: #ccff00;
-  --psychedelic-magenta: #ff00ff;
+  --psychedelic-purple: #b040ff;    /* Increased brightness */
+  --psychedelic-pink: #ff3db8;      /* Increased brightness */
+  --psychedelic-orange: #ff8850;    /* Increased brightness */
+  --psychedelic-yellow: #ffd700;    /* Already compliant */
+  --psychedelic-cyan: #00ffff;      /* Already compliant */
+  --psychedelic-lime: #d4ff33;      /* Increased brightness */
+  --psychedelic-magenta: #ff40ff;   /* Increased brightness */
   --deep-purple: #0a0514;
   --dark-purple: #1a0f2e;
   
@@ -482,4 +482,50 @@ html {
     animation-iteration-count: 1 !important;
     transition-duration: 0.2s !important;
   }
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Global focus indicators for accessibility */
+*:focus-visible {
+  outline: 3px solid var(--psychedelic-cyan);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--psychedelic-magenta);
+  outline-offset: 2px;
+}
+
+/* Ensure focus is visible even on custom styled elements */
+.button-wave:focus-visible,
+.hero-button:focus-visible {
+  outline: 3px solid var(--psychedelic-cyan);
+  outline-offset: 4px;
 }

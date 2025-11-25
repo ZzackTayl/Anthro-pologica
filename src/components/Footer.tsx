@@ -67,6 +67,8 @@ export function Footer({ enableMotion = true, onOpenAccessibilitySettings }: Foo
       <div className="absolute inset-x-0 top-0 overflow-hidden">
         {enableMotion ? (
           <svg
+            aria-hidden="true"
+            role="presentation"
             className="w-full h-32"
             viewBox="0 0 1200 120"
             preserveAspectRatio="none"
@@ -109,6 +111,8 @@ export function Footer({ enableMotion = true, onOpenAccessibilitySettings }: Foo
           </svg>
         ) : (
           <svg
+            aria-hidden="true"
+            role="presentation"
             className="w-full h-32"
             viewBox="0 0 1200 120"
             preserveAspectRatio="none"
@@ -191,7 +195,11 @@ export function Footer({ enableMotion = true, onOpenAccessibilitySettings }: Foo
                 Get our monthly newsletter with UX insights and neurodivergent design tips.
               </p>
               <div className="flex flex-col sm:flex-row gap-2">
+                <label htmlFor="newsletter-email" className="sr-only">
+                  Email address for newsletter subscription
+                </label>
                 <input
+                  id="newsletter-email"
                   type="email"
                   placeholder="your@email.com"
                   className="flex-1 px-4 py-3 rounded-full bg-[var(--input-background)] border border-[var(--psychedelic-yellow)] text-foreground focus:outline-hidden focus:ring-2 focus:ring-[var(--psychedelic-yellow)]"
@@ -258,7 +266,9 @@ export function Footer({ enableMotion = true, onOpenAccessibilitySettings }: Foo
             {...fadeIn(0.3)}
             className="flex justify-center gap-6 mb-12"
           >
-            {socialLinks.map((social, i) => {
+            {socialLinks
+              .filter((social) => social.href && social.href !== '#')
+              .map((social, i) => {
               const Icon = social.icon;
               return (
                 <motion.a

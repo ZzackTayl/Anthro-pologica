@@ -16,6 +16,13 @@ export interface ApplyAccessibilityPreferencesOptions {
   persist?: boolean;
 }
 
+const getSystemMotionPreference = (): boolean => {
+  if (typeof window === 'undefined') return true;
+
+  const mediaQuery = window.matchMedia(REDUCED_MOTION_QUERY);
+  return !mediaQuery.matches;
+};
+
 function getPrefersReducedMotion() {
   if (typeof window === 'undefined') {
     return false;
@@ -62,7 +69,10 @@ export function useAccessibilityPreferences(): {
   ) => AccessibilityPreferences;
 } {
   const [preferences, setPreferences] = useState<AccessibilityPreferences>(() =>
-    applyMotionPreference(DEFAULT_ACCESSIBILITY_PREFERENCES)
+    applyMotionPreference({
+      ...DEFAULT_ACCESSIBILITY_PREFERENCES,
+      motion: getSystemMotionPreference(),
+    })
   );
   const preferencesRef = useRef(preferences);
 
@@ -94,7 +104,10 @@ export function useAccessibilityPreferences(): {
     if (saved) {
       applyAndSetPreferences(saved);
     } else {
-      applyAndSetPreferences(DEFAULT_ACCESSIBILITY_PREFERENCES);
+      applyAndSetPreferences({
+        ...DEFAULT_ACCESSIBILITY_PREFERENCES,
+        motion: getSystemMotionPreference(),
+      });
     }
   }, [applyAndSetPreferences]);
 
@@ -147,4 +160,3 @@ export function useAccessibilityPreferences(): {
     updatePreferences,
   };
 }
-

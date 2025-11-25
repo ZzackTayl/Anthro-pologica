@@ -14,6 +14,10 @@ export function ContactSection({ enableMotion = true }: ContactSectionProps) {
   const canHover = useCanHover();
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStatus, setFormStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
   const particles = useMemo(() => {
     const colors = [
       'var(--psychedelic-magenta)',
@@ -51,6 +55,7 @@ export function ContactSection({ enableMotion = true }: ContactSectionProps) {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsSubmitting(true);
+    setFormStatus({ type: null, message: '' });
 
     const formData = new FormData(event.currentTarget);
     const data = Object.fromEntries(formData.entries());
@@ -70,15 +75,22 @@ export function ContactSection({ enableMotion = true }: ContactSectionProps) {
         throw new Error(result.error || "Failed to send message");
       }
 
-      window.alert(result.message || 'Thanks! Your message is on the way.');
+      setFormStatus({
+        type: 'success',
+        message: result.message || 'Thanks! Your message is on the way.'
+      });
       event.currentTarget.reset();
+      setFocusedField(null);
     } catch (error) {
       console.error('Submission error:', error);
       let errorMessage = 'Sorry, something went wrong. Please try again in a moment.';
       if (error instanceof Error) {
         errorMessage = error.message;
       }
-      window.alert(errorMessage);
+      setFormStatus({
+        type: 'error',
+        message: errorMessage
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -307,8 +319,44 @@ export function ContactSection({ enableMotion = true }: ContactSectionProps) {
             />
 
             <form className="relative space-y-6" onSubmit={handleSubmit}>
+              {formStatus.type && (
+                <motion.div
+                  role="alert"
+                  aria-live="polite"
+                  aria-atomic="true"
+                  className="p-4 rounded-lg mb-4"
+                  style={{
+                    background: formStatus.type === 'success'
+                      ? 'rgba(0, 255, 0, 0.1)'
+                      : 'rgba(255, 107, 53, 0.1)',
+                    border: `2px solid ${formStatus.type === 'success' ? 'var(--psychedelic-cyan)' : 'var(--psychedelic-orange)'}`,
+                  }}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  <p
+                    style={{
+                      color: formStatus.type === 'success'
+                        ? 'var(--psychedelic-cyan)'
+                        : 'var(--psychedelic-orange)'
+                    }}
+                  >
+                    {formStatus.message}
+                  </p>
+                </motion.div>
+              )}
+
+              <p className="text-sm opacity-80 mb-4">
+                Fields marked with <span className="text-destructive">*</span> are required.
+              </p>
+
               <div>
-                <label className="block text-sm mb-2 opacity-80">Name</label>
+                <label
+                  htmlFor="contact-name"
+                  className="block text-sm mb-2 opacity-80"
+                >
+                  Name <span className="text-destructive" aria-label="required">*</span>
+                </label>
                 <motion.div
                   whileFocus={enableMotion ? { scale: 1.02 } : undefined}
                   animate={
@@ -327,9 +375,12 @@ export function ContactSection({ enableMotion = true }: ContactSectionProps) {
                   transition={enableMotion ? undefined : { duration: 0 }}
                 >
                   <Input
+                    id="contact-name"
                     type="text"
                     placeholder="Your name"
                     name="name"
+                    required
+                    aria-required="true"
                     onFocus={() => setFocusedField('name')}
                     onBlur={() => setFocusedField(null)}
                     className="bg-[var(--input-background)] border-2 border-[var(--psychedelic-magenta)] focus:border-[var(--psychedelic-cyan)] transition-colors"
@@ -338,7 +389,12 @@ export function ContactSection({ enableMotion = true }: ContactSectionProps) {
               </div>
 
               <div>
-                <label className="block text-sm mb-2 opacity-80">Email</label>
+                <label
+                  htmlFor="contact-email"
+                  className="block text-sm mb-2 opacity-80"
+                >
+                  Email <span className="text-destructive" aria-label="required">*</span>
+                </label>
                 <motion.div
                   whileFocus={enableMotion ? { scale: 1.02 } : undefined}
                   animate={
@@ -357,9 +413,12 @@ export function ContactSection({ enableMotion = true }: ContactSectionProps) {
                   transition={enableMotion ? undefined : { duration: 0 }}
                 >
                   <Input
+                    id="contact-email"
                     type="email"
                     placeholder="your@email.com"
                     name="email"
+                    required
+                    aria-required="true"
                     onFocus={() => setFocusedField('email')}
                     onBlur={() => setFocusedField(null)}
                     className="bg-[var(--input-background)] border-2 border-[var(--psychedelic-cyan)] focus:border-[var(--psychedelic-magenta)] transition-colors"
@@ -368,7 +427,12 @@ export function ContactSection({ enableMotion = true }: ContactSectionProps) {
               </div>
 
               <div>
-                <label className="block text-sm mb-2 opacity-80">What would you like to discuss?</label>
+                <label
+                  htmlFor="contact-project"
+                  className="block text-sm mb-2 opacity-80"
+                >
+                  What would you like to discuss?
+                </label>
                 <motion.div
                   whileFocus={enableMotion ? { scale: 1.02 } : undefined}
                   animate={
@@ -387,6 +451,7 @@ export function ContactSection({ enableMotion = true }: ContactSectionProps) {
                   transition={enableMotion ? undefined : { duration: 0 }}
                 >
                   <Input
+                    id="contact-project"
                     type="text"
                     placeholder="What are we creating?"
                     name="project"
@@ -398,7 +463,12 @@ export function ContactSection({ enableMotion = true }: ContactSectionProps) {
               </div>
 
               <div>
-                <label className="block text-sm mb-2 opacity-80">Message</label>
+                <label
+                  htmlFor="contact-message"
+                  className="block text-sm mb-2 opacity-80"
+                >
+                  Message <span className="text-destructive" aria-label="required">*</span>
+                </label>
                 <motion.div
                   whileFocus={enableMotion ? { scale: 1.02 } : undefined}
                   animate={
@@ -417,9 +487,12 @@ export function ContactSection({ enableMotion = true }: ContactSectionProps) {
                   transition={enableMotion ? undefined : { duration: 0 }}
                 >
                   <Textarea
+                    id="contact-message"
                     placeholder="Tell us about your vision..."
                     rows={5}
                     name="message"
+                    required
+                    aria-required="true"
                     onFocus={() => setFocusedField('message')}
                     onBlur={() => setFocusedField(null)}
                     className="bg-[var(--input-background)] border-2 border-[var(--psychedelic-yellow)] focus:border-[var(--psychedelic-orange)] transition-colors resize-none"
