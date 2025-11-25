@@ -593,6 +593,12 @@ select:focus-visible {
   border: 2px solid #ffffff;
 }
 
+.project-context-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
 .project-pagination-dot .project-dot {
   background: rgba(255, 255, 255, 0.3);
 }

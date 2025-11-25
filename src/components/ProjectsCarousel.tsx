@@ -71,6 +71,8 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
   const currentMedia = projectMedia[currentProject.id];
   const isCaseStudyAvailable = currentProject.caseStudyAvailable !== false;
   const projectThemeClass = `project-theme-${currentProject.id}`;
+  const contextTags = currentProject.tags?.slice(4) ?? [];
+  const hasContextTags = contextTags.length > 0;
 
   return (
     <section id="projects-section" className="relative py-32 px-6 pb-40 overflow-hidden">
@@ -299,26 +301,6 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
                       {currentProject.description}
                     </p>
 
-                    {/* Context cards - skip first 4 tags (3 badges + 1 launching soon) */}
-                    {currentProject.tags?.length > 4 && (
-                      <div className="space-y-3 mb-8">
-                        <div className="flex flex-wrap gap-2">
-                          {currentProject.tags.slice(4).map((tag, i) => (
-                            <div
-                              key={`context-${i}`}
-                              className={`flex items-start gap-3 px-3 py-2 rounded-xl shadow-md backdrop-blur-sm project-context-card ${projectThemeClass}`}
-                            >
-                              <span
-                                className={`mt-1 inline-block w-2 h-2 rounded-full shrink-0 project-context-dot ${projectThemeClass}`}
-                                aria-hidden
-                              />
-                              <span className="text-sm leading-relaxed">{tag}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
                     {isCaseStudyAvailable ? (
                       <motion.button
                         onClick={() => onProjectClick(currentProject.id)}
@@ -344,6 +326,24 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
                         <ExternalLink size={18} />
                       </motion.a>
                     ) : null}
+
+                    {/* Context cards - skip first 4 tags (3 badges + 1 launching soon) */}
+                    {hasContextTags && (
+                      <div className="project-context-grid mt-8">
+                        {contextTags.map((tag, i) => (
+                          <div
+                            key={`context-${i}`}
+                            className={`flex items-start gap-3 px-3 py-2 rounded-xl shadow-md backdrop-blur-sm project-context-card ${projectThemeClass}`}
+                          >
+                            <span
+                              className={`mt-1 inline-block w-2 h-2 rounded-full shrink-0 project-context-dot ${projectThemeClass}`}
+                              aria-hidden
+                            />
+                            <span className="text-sm leading-relaxed">{tag}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </motion.div>
                 </div>
               </div>
