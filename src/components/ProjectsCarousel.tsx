@@ -307,20 +307,16 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
                       {currentProject.description}
                     </p>
 
-                    {/* Context cards - skip first 4 tags (3 badges + 1 launching soon) */}
+                    {/* Context badges - skip first 4 tags (3 badges + 1 launching soon) */}
                     {hasContextTags && (
-                      <div className="project-context-grid mb-8">
+                      <div className="flex flex-wrap gap-3 mb-6">
                         {contextTags.map((tag, i) => (
-                          <div
+                          <span
                             key={`context-${i}`}
-                            className={`flex items-start gap-3 px-3 py-2 rounded-xl shadow-md backdrop-blur-sm project-context-card ${projectThemeClass}`}
+                            className={`px-3 py-1 rounded-full text-sm border-2 project-context-badge ${projectThemeClass}`}
                           >
-                            <span
-                              className={`mt-1 inline-block w-2 h-2 rounded-full shrink-0 project-context-dot ${projectThemeClass}`}
-                              aria-hidden
-                            />
-                            <span className="text-sm leading-relaxed">{tag}</span>
-                          </div>
+                            {tag}
+                          </span>
                         ))}
                       </div>
                     )}

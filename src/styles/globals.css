@@ -600,6 +600,12 @@ select:focus-visible {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
+.project-context-badge {
+  border-color: var(--project-color, var(--psychedelic-magenta));
+  color: var(--project-color, var(--psychedelic-magenta));
+  background: rgba(255, 255, 255, 0.08);
+}
+
 .project-pagination-dot .project-dot {
   background: rgba(255, 255, 255, 0.3);
 }
