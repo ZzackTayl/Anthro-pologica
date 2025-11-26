@@ -7,7 +7,7 @@ import { getProjectById } from './data/projects';
 import { useAccessibilityPreferences } from './hooks/useAccessibilityPreferences';
 import './styles.css'; // Import the CSS file with our styles
 
-type Route = 'home' | 'project';
+type Route = 'home' | 'project' | 'case-study';
 
 const PhilosophySection = lazy(() =>
   import('./components/PhilosophySection').then((module) => ({ default: module.PhilosophySection }))
@@ -37,6 +37,10 @@ const ProjectDetailPage = lazy(() =>
   import('./components/ProjectDetailPage').then((module) => ({ default: module.ProjectDetailPage }))
 );
 
+const MyOrbitCaseStudyPage = lazy(() =>
+  import('./components/MyOrbitCaseStudyPage').then((module) => ({ default: module.MyOrbitCaseStudyPage }))
+);
+
 const AccessibilityPreferencesDialog = lazy(() =>
   import('./components/AccessibilityPreferences').then((module) => ({ default: module.AccessibilityPreferencesDialog }))
 );
@@ -44,12 +48,12 @@ const AccessibilityPreferencesDialog = lazy(() =>
 function SectionSkeleton({ height = 'project-card' }: { height?: string }) {
   // Map height string to appropriate CSS class
   const heightClass = height === '16rem' ? 'project-card' :
-                     height === '20rem' ? 'project-card-tall' :
-                     height === '28rem' ? 'project-card-extra-tall' :
-                     height === '12rem' ? 'project-card-footer' :
-                     height === '32rem' ? 'project-card-project-detail' :
-                     'project-card';
-                     
+    height === '20rem' ? 'project-card-tall' :
+      height === '28rem' ? 'project-card-extra-tall' :
+        height === '12rem' ? 'project-card-footer' :
+          height === '32rem' ? 'project-card-project-detail' :
+            'project-card';
+
   return (
     <div className="py-24 px-6" aria-hidden>
       <div
@@ -77,7 +81,12 @@ export default function App() {
     }
 
     setSelectedProjectId(projectId);
-    setCurrentRoute('project');
+    // Navigate to case study page for MyOrbit, standard project page for others
+    if (projectId === 'myorbit') {
+      setCurrentRoute('case-study');
+    } else {
+      setCurrentRoute('project');
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -107,7 +116,9 @@ export default function App() {
   const selectedProject = selectedProjectId ? getProjectById(selectedProjectId) : null;
 
   useEffect(() => {
-    if (currentRoute === 'project' && selectedProject) {
+    if (currentRoute === 'case-study') {
+      document.title = 'MyOrbit Case Study: $800 vs $150K - Anthro-pologica UX';
+    } else if (currentRoute === 'project' && selectedProject) {
       document.title = `${selectedProject.title} - Anthro-pologica UX`;
     } else {
       document.title = 'Anthro-pologica UX - Human-Centered Design & Neurodivergent Insight';
@@ -117,89 +128,101 @@ export default function App() {
   return (
     <MotionConfig reducedMotion={accessibilityPrefs.motion ? 'never' : 'always'}>
       <>
-      <Suspense fallback={null}>
-        {showAccessibilityDialog ? (
-          <AccessibilityPreferencesDialog
-            onSave={applyPreferences}
-            preferences={accessibilityPrefs}
-            isOpen={showAccessibilityDialog}
-            onClose={() => setShowAccessibilityDialog(false)}
+        <Suspense fallback={null}>
+          {showAccessibilityDialog ? (
+            <AccessibilityPreferencesDialog
+              onSave={applyPreferences}
+              preferences={accessibilityPrefs}
+              isOpen={showAccessibilityDialog}
+              onClose={() => setShowAccessibilityDialog(false)}
+            />
+          ) : null}
+        </Suspense>
+
+        <div className="min-h-screen bg-background text-foreground antialiased">
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:rounded-lg"
+            style={{
+              background: 'var(--vibrant-cyan)',
+              color: '#000',
+              fontWeight: 'bold',
+            }}
+          >
+            Skip to main content
+          </a>
+
+          <Navigation
+            onNavigateHome={handleNavigateHome}
+            onOpenPersonalize={handleOpenPersonalize}
+            isHomePage={currentRoute === 'home'}
+            enableMotion={motionEnabled}
           />
-        ) : null}
-      </Suspense>
-      
-      <div className="min-h-screen bg-background text-foreground antialiased">
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:rounded-lg"
-          style={{
-            background: 'var(--psychedelic-cyan)',
-            color: '#000',
-            fontWeight: 'bold',
-          }}
-        >
-          Skip to main content
-        </a>
 
-        <Navigation 
-          onNavigateHome={handleNavigateHome} 
-          onOpenPersonalize={handleOpenPersonalize}
-          isHomePage={currentRoute === 'home'}
-          enableMotion={motionEnabled}
-        />
-
-        <main id="main-content">
-          <AnimatePresence mode="wait">
-            {currentRoute === 'home' ? (
-              <motion.div
-                key="home"
-                initial={motionEnabled ? { opacity: 0 } : false}
-                animate={{ opacity: 1 }}
-                exit={motionEnabled ? { opacity: 0 } : {}}
-                transition={motionEnabled ? { duration: 0.5 } : { duration: 0 }}
-              >
-                <HeroSection enableMotion={motionEnabled} />
-                <Suspense fallback={<SectionSkeleton />}>
-                  <PhilosophySection enableMotion={motionEnabled} />
-                </Suspense>
-                <Suspense fallback={<SectionSkeleton />}>
-                  <TeamSection enableMotion={motionEnabled} />
-                </Suspense>
-                <Suspense fallback={<SectionSkeleton height="20rem" />}>
-                  <SkillsSection enableMotion={motionEnabled} />
-                </Suspense>
-                <Suspense fallback={<SectionSkeleton height="28rem" />}>
-                  <ProjectsCarousel 
-                    onProjectClick={handleProjectClick}
-                    enableMotion={motionEnabled}
-                  />
-                </Suspense>
-                <Suspense fallback={<SectionSkeleton />}>
-                  <ContactSection enableMotion={motionEnabled} />
-                </Suspense>
-                <Suspense fallback={<SectionSkeleton height="12rem" />}>
-                  <Footer 
-                    enableMotion={motionEnabled}
-                    onOpenAccessibilitySettings={handleOpenPersonalize}
-                  />
-                </Suspense>
-              </motion.div>
-            ) : currentRoute === 'project' && selectedProject ? (
-              <motion.div
-                key="project"
-                initial={motionEnabled ? { opacity: 0 } : false}
-                animate={{ opacity: 1 }}
-                exit={motionEnabled ? { opacity: 0 } : {}}
-                transition={motionEnabled ? { duration: 0.5 } : { duration: 0 }}
-              >
-                <Suspense fallback={<SectionSkeleton height="32rem" />}>
-                  <ProjectDetailPage project={selectedProject} enableMotion={motionEnabled} />
-                </Suspense>
-              </motion.div>
-            ) : null}
-          </AnimatePresence>
-        </main>
-      </div>
+          <main id="main-content">
+            <AnimatePresence mode="wait">
+              {currentRoute === 'home' ? (
+                <motion.div
+                  key="home"
+                  initial={motionEnabled ? { opacity: 0 } : false}
+                  animate={{ opacity: 1 }}
+                  exit={motionEnabled ? { opacity: 0 } : {}}
+                  transition={motionEnabled ? { duration: 0.5 } : { duration: 0 }}
+                >
+                  <HeroSection enableMotion={motionEnabled} />
+                  <Suspense fallback={<SectionSkeleton />}>
+                    <PhilosophySection enableMotion={motionEnabled} />
+                  </Suspense>
+                  <Suspense fallback={<SectionSkeleton />}>
+                    <TeamSection enableMotion={motionEnabled} />
+                  </Suspense>
+                  <Suspense fallback={<SectionSkeleton height="20rem" />}>
+                    <SkillsSection enableMotion={motionEnabled} />
+                  </Suspense>
+                  <Suspense fallback={<SectionSkeleton height="28rem" />}>
+                    <ProjectsCarousel
+                      onProjectClick={handleProjectClick}
+                      enableMotion={motionEnabled}
+                    />
+                  </Suspense>
+                  <Suspense fallback={<SectionSkeleton />}>
+                    <ContactSection enableMotion={motionEnabled} />
+                  </Suspense>
+                  <Suspense fallback={<SectionSkeleton height="12rem" />}>
+                    <Footer
+                      enableMotion={motionEnabled}
+                      onOpenAccessibilitySettings={handleOpenPersonalize}
+                    />
+                  </Suspense>
+                </motion.div>
+              ) : currentRoute === 'project' && selectedProject ? (
+                <motion.div
+                  key="project"
+                  initial={motionEnabled ? { opacity: 0 } : false}
+                  animate={{ opacity: 1 }}
+                  exit={motionEnabled ? { opacity: 0 } : {}}
+                  transition={motionEnabled ? { duration: 0.5 } : { duration: 0 }}
+                >
+                  <Suspense fallback={<SectionSkeleton height="32rem" />}>
+                    <ProjectDetailPage project={selectedProject} enableMotion={motionEnabled} />
+                  </Suspense>
+                </motion.div>
+              ) : currentRoute === 'case-study' ? (
+                <motion.div
+                  key="case-study"
+                  initial={motionEnabled ? { opacity: 0 } : false}
+                  animate={{ opacity: 1 }}
+                  exit={motionEnabled ? { opacity: 0 } : {}}
+                  transition={motionEnabled ? { duration: 0.5 } : { duration: 0 }}
+                >
+                  <Suspense fallback={<SectionSkeleton height="32rem" />}>
+                    <MyOrbitCaseStudyPage enableMotion={motionEnabled} />
+                  </Suspense>
+                </motion.div>
+              ) : null}
+            </AnimatePresence>
+          </main>
+        </div>
       </>
     </MotionConfig>
   );

@@ -1,5 +1,5 @@
-import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
-import { useEffect, useMemo } from 'react';
+import { motion } from 'motion/react';
+import backgroundSand from '../assets/background_sand.webp';
 import { useCanHover } from './ui/use-can-hover';
 
 interface HeroSectionProps {
@@ -8,166 +8,30 @@ interface HeroSectionProps {
 
 export function HeroSection({ enableMotion = true }: HeroSectionProps) {
   const canHover = useCanHover();
-  const rawScrollY = useMotionValue(0);
-  const smoothScrollY = useSpring(rawScrollY, { stiffness: 120, damping: 26, mass: 0.6 });
-
-  useEffect(() => {
-    if (!enableMotion) {
-      rawScrollY.set(0);
-      return;
-    }
-
-    let frameId = 0;
-    const updateScroll = () => {
-      rawScrollY.set(window.scrollY);
-    };
-
-    const handleScroll = () => {
-      cancelAnimationFrame(frameId);
-      frameId = window.requestAnimationFrame(updateScroll);
-    };
-
-    updateScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      cancelAnimationFrame(frameId);
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [enableMotion, rawScrollY]);
-
-  const blobParallax = useTransform(smoothScrollY, (value) => value * 0.1);
-  const blobParallaxSecondary = useTransform(smoothScrollY, (value) => value * 0.15);
-  const blobParallaxTertiary = useTransform(smoothScrollY, (value) => value * 0.12);
-
-  const geometricShapes = useMemo(() => {
-    const borderPalette = [
-      'var(--psychedelic-magenta)',
-      'var(--psychedelic-cyan)',
-      'var(--psychedelic-yellow)',
-    ];
-
-    return Array.from({ length: 6 }).map((_, index) => ({
-      top: `${Math.random() * 100}%`,
-      left: `${Math.random() * 100}%`,
-      width: 50 + Math.random() * 100,
-      height: 50 + Math.random() * 100,
-      borderColor: borderPalette[index % borderPalette.length],
-      rotate: Math.random() * 360,
-      duration: 20 + Math.random() * 10,
-    }));
-  }, []);
+  const heroMinHeight = 'max(100vh, 66.67vw)'; // maintain image aspect ratio (1536x1024) without stretching
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 md:pt-40">
-      {/* Animated background blobs */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full opacity-60"
-          style={
-            enableMotion
-              ? {
-                  background: 'radial-gradient(circle, var(--psychedelic-purple), transparent)',
-                  filter: 'blur(80px)',
-                  y: blobParallax,
-                  willChange: 'transform',
-                }
-              : {
-                  background: 'radial-gradient(circle, var(--psychedelic-purple), transparent)',
-                  filter: 'blur(80px)',
-                }
-          }
-          animate={enableMotion ? {
-            scale: [1, 1.2, 1],
-            x: [0, 50, 0],
-          } : {}}
-          transition={enableMotion ? {
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          } : {}}
+    <section
+      className="relative flex items-center justify-center overflow-hidden pt-32 md:pt-40"
+      style={{ minHeight: heroMinHeight }}
+    >
+      {/* Static background image replaces animated blobs and geometric shapes */}
+      <div className="absolute inset-0 overflow-hidden flex items-center justify-center">
+        <img
+          aria-hidden="true"
+          src={backgroundSand}
+          alt=""
+          className="w-full h-auto max-w-none object-contain bg-black"
         />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full opacity-60"
-          style={
-            enableMotion
-              ? {
-                  background: 'radial-gradient(circle, var(--psychedelic-pink), transparent)',
-                  filter: 'blur(80px)',
-                  y: blobParallaxSecondary,
-                  willChange: 'transform',
-                }
-              : {
-                  background: 'radial-gradient(circle, var(--psychedelic-pink), transparent)',
-                  filter: 'blur(80px)',
-                }
-          }
-          animate={enableMotion ? {
-            scale: [1, 1.3, 1],
-            x: [0, -50, 0],
-          } : {}}
-          transition={enableMotion ? {
-            duration: 10,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          } : {}}
-        />
-        <motion.div
-          className="absolute top-1/2 right-1/3 w-80 h-80 rounded-full opacity-60"
-          style={
-            enableMotion
-              ? {
-                  background: 'radial-gradient(circle, var(--psychedelic-cyan), transparent)',
-                  filter: 'blur(80px)',
-                  y: blobParallaxTertiary,
-                  willChange: 'transform',
-                }
-              : {
-                  background: 'radial-gradient(circle, var(--psychedelic-cyan), transparent)',
-                  filter: 'blur(80px)',
-                }
-          }
-          animate={enableMotion ? {
-            scale: [1.2, 1, 1.2],
-            y: [0, -30, 0],
-          } : {}}
-          transition={enableMotion ? {
-            duration: 12,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          } : {}}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(circle at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0.28) 45%, rgba(0,0,0,0.48) 65%, rgba(0,0,0,0.62) 100%), linear-gradient(to bottom, rgba(0,0,0,0.28), rgba(0,0,0,0.48))',
+          }}
         />
       </div>
-
-      {/* Geometric shapes - only render if motion enabled */}
-      {enableMotion && (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {geometricShapes.map((shape, i) => (
-            <motion.div
-              key={i}
-              className="absolute border-2 opacity-20"
-              style={{
-                top: shape.top,
-                left: shape.left,
-                width: `${shape.width}px`,
-                height: `${shape.height}px`,
-                borderColor: shape.borderColor,
-                rotate: `${shape.rotate}deg`,
-                willChange: 'transform',
-              }}
-              animate={{
-                rotate: [0, 360],
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: shape.duration,
-                repeat: Infinity,
-                ease: 'linear',
-              }}
-            />
-          ))}
-        </div>
-      )}
 
       {/* Main content */}
       <div className="relative z-10 text-center px-6 max-w-6xl mx-auto pb-16 md:pb-24">
@@ -198,7 +62,7 @@ export function HeroSection({ enableMotion = true }: HeroSectionProps) {
           initial={enableMotion ? { opacity: 0, y: 30 } : false}
           animate={enableMotion ? { opacity: 1, y: 0 } : undefined}
           transition={enableMotion ? { duration: 1, delay: 0.3 } : undefined}
-          className="space-y-4"
+          className="space-y-4 mt-10"
         >
           <p className="text-xl md:text-3xl mb-8">
             <span style={{ color: '#ffffff' }}>At the Center of </span>
@@ -239,7 +103,7 @@ export function HeroSection({ enableMotion = true }: HeroSectionProps) {
           initial={enableMotion ? { opacity: 0, scale: 0.8 } : false}
           animate={enableMotion ? { opacity: 1, scale: 1 } : undefined}
           transition={enableMotion ? { duration: 1, delay: 0.6 } : undefined}
-          className="mt-12"
+          className="mt-16 md:mt-20"
         >
           <motion.a
             href="#projects-section"

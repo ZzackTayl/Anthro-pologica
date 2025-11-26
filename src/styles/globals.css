@@ -73,18 +73,25 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-  
-  /* Psychedelic Colors */
-  --psychedelic-purple: #b040ff;    /* Increased brightness */
-  --psychedelic-pink: #ff3db8;      /* Increased brightness */
-  --psychedelic-orange: #ff8850;    /* Increased brightness */
-  --psychedelic-yellow: #ffd700;    /* Already compliant */
-  --psychedelic-cyan: #00ffff;      /* Already compliant */
-  --psychedelic-lime: #d4ff33;      /* Increased brightness */
-  --psychedelic-magenta: #ff40ff;   /* Increased brightness */
+
+  /* Vibrant Colors */
+  --vibrant-purple: #b040ff;
+  /* Increased brightness */
+  --vibrant-pink: #ff3db8;
+  /* Increased brightness */
+  --vibrant-orange: #ff8850;
+  /* Increased brightness */
+  --vibrant-yellow: #ffd700;
+  /* Already compliant */
+  --vibrant-cyan: #00ffff;
+  /* Already compliant */
+  --vibrant-lime: #d4ff33;
+  /* Increased brightness */
+  --vibrant-magenta: #ff40ff;
+  /* Increased brightness */
   --deep-purple: #0a0514;
   --dark-purple: #1a0f2e;
-  
+
   /* Accessibility */
   --color-intensity: 1;
   --spacing-multiplier: 1;
@@ -251,19 +258,24 @@ html {
   0% {
     transform: rotate(0deg) scale(1);
   }
+
   50% {
     transform: rotate(180deg) scale(1.1);
   }
+
   100% {
     transform: rotate(360deg) scale(1);
   }
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.8;
     filter: blur(20px);
   }
+
   50% {
     opacity: 1;
     filter: blur(30px);
@@ -274,18 +286,23 @@ html {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-20px);
   }
@@ -295,6 +312,7 @@ html {
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(100%);
   }
@@ -320,12 +338,10 @@ html {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent);
   transform: translateX(-100%);
   transition: transform 0.6s ease;
 }
@@ -334,15 +350,15 @@ html {
   animation: wave 0.6s ease;
 }
 
-.psychedelic-gradient {
-  background: linear-gradient(135deg, 
-    var(--psychedelic-purple) 0%, 
-    var(--psychedelic-pink) 25%, 
-    var(--psychedelic-orange) 50%, 
-    var(--psychedelic-cyan) 75%, 
-    var(--psychedelic-purple) 100%);
+.vibrant-gradient {
+  background: linear-gradient(135deg,
+      var(--vibrant-purple) 0%,
+      var(--vibrant-pink) 25%,
+      var(--vibrant-orange) 50%,
+      var(--vibrant-cyan) 75%,
+      var(--vibrant-purple) 100%);
   background-size: 400% 400%;
-  animation: gradient-shift 15s ease infinite;
+  animation: vibrant-spin 15s ease infinite;
 }
 
 .groovy-text {
@@ -384,6 +400,7 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -409,12 +426,12 @@ html {
 }
 
 .high-contrast .psychedelic-gradient {
-  background: linear-gradient(135deg, 
-    #b040ff 0%, 
-    #ff3db8 25%, 
-    #ff8850 50%, 
-    #00ffff 75%, 
-    #b040ff 100%);
+  background: linear-gradient(135deg,
+      #b040ff 0%,
+      #ff3db8 25%,
+      #ff8850 50%,
+      #00ffff 75%,
+      #b040ff 100%);
   background-size: 400% 400%;
 }
 
@@ -428,15 +445,15 @@ html {
   padding-bottom: calc(4rem * var(--spacing-multiplier)) !important;
 }
 
-.compact-spacing .space-y-6 > * + * {
+.compact-spacing .space-y-6>*+* {
   margin-top: calc(1.5rem * var(--spacing-multiplier)) !important;
 }
 
-.compact-spacing .space-y-8 > * + * {
+.compact-spacing .space-y-8>*+* {
   margin-top: calc(2rem * var(--spacing-multiplier)) !important;
 }
 
-.compact-spacing .space-y-12 > * + * {
+.compact-spacing .space-y-12>*+* {
   margin-top: calc(3rem * var(--spacing-multiplier)) !important;
 }
 
@@ -476,6 +493,7 @@ html {
 
 /* Mobile-specific optimizations */
 @media (max-width: 768px) {
+
   .reduce-motion-mobile,
   .reduce-motion-mobile * {
     animation-duration: 0.01ms !important;
