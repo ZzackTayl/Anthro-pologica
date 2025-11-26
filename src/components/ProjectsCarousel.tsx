@@ -196,6 +196,12 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
             >
               <div
                 className={`relative p-8 md:p-12 rounded-3xl overflow-hidden project-card ${projectThemeClass}`}
+                style={{
+                  background: 'rgba(26, 15, 46, 0.8)',
+                  backdropFilter: 'blur(20px)',
+                  border: `3px solid ${currentProject.color}`,
+                  boxShadow: `0 0 0 4px ${currentProject.color}`,
+                }}
               >
                 {/* Gradient overlay */}
                 {enableMotion ? (
