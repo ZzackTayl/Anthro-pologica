@@ -32,9 +32,9 @@ export function AIWorkflowSection({
             <div
                 className="absolute inset-0 opacity-10"
                 style={{
-                    background:
-                        'linear-gradient(to bottom right, var(--vibrant-cyan), transparent, var(--vibrant-magenta))',
-                }}
+                        background:
+                            'linear-gradient(to bottom right, var(--psychedelic-cyan), transparent, var(--psychedelic-magenta))',
+                    }}
             />
 
             <div className="max-w-6xl mx-auto relative z-10">
@@ -48,7 +48,7 @@ export function AIWorkflowSection({
                         className="groovy-text mb-6"
                         style={{
                             fontSize: 'clamp(2.5rem, 6vw, 6rem)',
-                            background: 'linear-gradient(135deg, #fff, var(--vibrant-cyan))',
+                            background: 'linear-gradient(135deg, #fff, var(--psychedelic-cyan))',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',
                             backgroundClip: 'text',
@@ -82,11 +82,11 @@ export function AIWorkflowSection({
                                         className="w-24 h-24 rounded-full flex items-center justify-center"
                                         style={{
                                             background: 'var(--background)',
-                                            border: '2px solid var(--vibrant-cyan)',
+                                            border: '2px solid var(--psychedelic-cyan)',
                                             boxShadow: '0 0 30px rgba(0, 245, 255, 0.2)',
                                         }}
                                     >
-                                        <IconComponent size={40} style={{ color: 'var(--vibrant-cyan)' }} />
+                                        <IconComponent size={40} style={{ color: 'var(--psychedelic-cyan)' }} />
                                     </div>
                                 </div>
 

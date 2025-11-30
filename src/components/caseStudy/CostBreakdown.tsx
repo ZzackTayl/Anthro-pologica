@@ -43,7 +43,7 @@ export function CostBreakdown({ title, intro, items, whyTheGap, enableMotion = t
                     <motion.div
                         className="absolute top-1/2 left-1/2 w-[800px] h-[800px] rounded-full opacity-15"
                         style={{
-                            background: 'radial-gradient(circle, var(--vibrant-yellow), transparent)',
+                            background: 'radial-gradient(circle, var(--psychedelic-yellow), transparent)',
                             filter: 'blur(100px)',
                             x: '-50%',
                             y: '-50%',
@@ -58,7 +58,7 @@ export function CostBreakdown({ title, intro, items, whyTheGap, enableMotion = t
                     <div
                         className="absolute top-1/2 left-1/2 w-[800px] h-[800px] rounded-full opacity-15"
                         style={{
-                            background: 'radial-gradient(circle, var(--vibrant-yellow), transparent)',
+                            background: 'radial-gradient(circle, var(--psychedelic-yellow), transparent)',
                             filter: 'blur(100px)',
                             transform: 'translate(-50%, -50%)',
                         }}
@@ -78,7 +78,7 @@ export function CostBreakdown({ title, intro, items, whyTheGap, enableMotion = t
                         className="groovy-text mb-6"
                         style={{
                             fontSize: 'clamp(2.5rem, 6vw, 6rem)',
-                            background: 'linear-gradient(135deg, var(--vibrant-yellow), var(--vibrant-orange))',
+                            background: 'linear-gradient(135deg, var(--psychedelic-yellow), var(--psychedelic-orange))',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',
                             backgroundClip: 'text',
@@ -98,22 +98,22 @@ export function CostBreakdown({ title, intro, items, whyTheGap, enableMotion = t
                         viewport={{ once: true, amount: 0.3 }}
                         transition={enableMotion ? { duration: 0.8 } : undefined}
                     >
-                        <h3 className="text-2xl font-semibold mb-6 text-center" style={{ color: 'var(--vibrant-orange)' }}>
+                        <h3 className="text-2xl font-semibold mb-6 text-center" style={{ color: 'var(--psychedelic-orange)' }}>
                             Traditional Development
                         </h3>
                         <div className="relative h-[400px] flex items-end justify-center">
                             <motion.div
                                 className="w-full max-w-[200px] rounded-t-3xl relative"
                                 style={{
-                                    background: 'linear-gradient(to top, var(--vibrant-orange), var(--vibrant-yellow))',
-                                    boxShadow: '0 0 40px var(--vibrant-orange)60',
+                                    background: 'linear-gradient(to top, var(--psychedelic-orange), var(--psychedelic-yellow))',
+                                    boxShadow: '0 0 40px var(--psychedelic-orange)60',
                                 }}
                                 initial={{ height: 0 }}
                                 animate={inView ? { height: '100%' } : { height: 0 }}
                                 transition={{ duration: 1.5, ease: 'easeOut' }}
                             >
                                 <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 text-center">
-                                    <div className="text-5xl font-bold groovy-text" style={{ color: 'var(--vibrant-orange)' }}>
+                                    <div className="text-5xl font-bold groovy-text" style={{ color: 'var(--psychedelic-orange)' }}>
                                         ${totalTraditional.toLocaleString()}
                                     </div>
                                     <div className="text-sm opacity-70 mt-1">Industry Standard</div>
@@ -129,22 +129,22 @@ export function CostBreakdown({ title, intro, items, whyTheGap, enableMotion = t
                         viewport={{ once: true, amount: 0.3 }}
                         transition={enableMotion ? { duration: 0.8 } : undefined}
                     >
-                        <h3 className="text-2xl font-semibold mb-6 text-center" style={{ color: 'var(--vibrant-cyan)' }}>
+                        <h3 className="text-2xl font-semibold mb-6 text-center" style={{ color: 'var(--psychedelic-cyan)' }}>
                             Our Approach
                         </h3>
                         <div className="relative h-[400px] flex items-end justify-center">
                             <motion.div
                                 className="w-full max-w-[200px] rounded-t-3xl relative"
                                 style={{
-                                    background: 'linear-gradient(to top, var(--vibrant-cyan), var(--vibrant-lime))',
-                                    boxShadow: '0 0 40px var(--vibrant-cyan)60',
+                                    background: 'linear-gradient(to top, var(--psychedelic-cyan), var(--psychedelic-lime))',
+                                    boxShadow: '0 0 40px var(--psychedelic-cyan)60',
                                 }}
                                 initial={{ height: 0 }}
                                 animate={inView ? { height: `${(totalOurs / maxValue) * 100}%` } : { height: 0 }}
                                 transition={{ duration: 1.5, ease: 'easeOut', delay: 0.3 }}
                             >
                                 <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 text-center">
-                                    <div className="text-5xl font-bold groovy-text" style={{ color: 'var(--vibrant-cyan)' }}>
+                                    <div className="text-5xl font-bold groovy-text" style={{ color: 'var(--psychedelic-cyan)' }}>
                                         ${totalOurs.toLocaleString()}
                                     </div>
                                     <div className="text-sm opacity-70 mt-1">UX-First Method</div>
@@ -164,7 +164,7 @@ export function CostBreakdown({ title, intro, items, whyTheGap, enableMotion = t
                     style={{
                         background: 'rgba(26, 15, 46, 0.6)',
                         backdropFilter: 'blur(10px)',
-                        border: '2px solid var(--vibrant-yellow)',
+                        border: '2px solid var(--psychedelic-yellow)',
                     }}
                 >
                     <h3 className="text-2xl font-semibold mb-6">Cost Breakdown by Category</h3>
@@ -178,7 +178,7 @@ export function CostBreakdown({ title, intro, items, whyTheGap, enableMotion = t
                                 <div className="text-sm opacity-70">
                                     Ours: <span className="text-cyan-400">${item.ourApproach.toLocaleString()}</span>
                                 </div>
-                                <div className="text-sm font-semibold" style={{ color: 'var(--vibrant-lime)' }}>
+                                <div className="text-sm font-semibold" style={{ color: 'var(--psychedelic-lime)' }}>
                                     Saved: ${item.savings.toLocaleString()}
                                 </div>
                             </div>
@@ -207,7 +207,7 @@ export function CostBreakdown({ title, intro, items, whyTheGap, enableMotion = t
                                 style={{
                                     background: 'rgba(26, 15, 46, 0.6)',
                                     backdropFilter: 'blur(10px)',
-                                    border: '2px solid var(--vibrant-cyan)',
+                                    border: '2px solid var(--psychedelic-cyan)',
                                 }}
                             >
                                 <p className="leading-relaxed">{reason}</p>

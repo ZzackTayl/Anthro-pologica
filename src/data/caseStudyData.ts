@@ -54,6 +54,13 @@ export interface CaseStudyData {
         hook: string;
         context: string;
     };
+    team: {
+        title: string;
+        members: Array<{
+            name: string;
+            badges: string[];
+        }>;
+    };
     problem: {
         title: string;
         intro: string;
@@ -113,7 +120,7 @@ export const myOrbitCaseStudy: CaseStudyData = {
     hero: {
         title: '$1,100 vs $150K: How UX Built This',
         subtitle:
-            "Three neurodivergent UX professionals built an enterprise-quality calendar app for less than the cost of a used laptop. Here's how rigorous research, intentional AI use, and a neurodivergent team delivered what competitors spend 100x more to achieve.",
+            "A small but mighty team of three neurodivergent humans built an enterprise-quality calendar app for less than the cost of a used laptop. Here's how rigorous research, intentional AI use, and a neurodivergent team delivered what competitors spend 100x more to achieve.",
         metrics: [
             {
                 value: '6',
@@ -140,10 +147,27 @@ export const myOrbitCaseStudy: CaseStudyData = {
         context:
             'In six months, three neurodivergent UX professionals built MyOrbit—a calendar and connection app redesigned for real human relationships—for $1,100 total spend. An app that would have cost $150,000 to develop two years ago. The difference? A custom AI-native development framework and rigorous UX methodology.',
     },
+    team: {
+        title: 'The Team',
+        members: [
+            {
+                name: 'Zack',
+                badges: ['template', 'template', 'template', 'template'],
+            },
+            {
+                name: 'Clare',
+                badges: ['template', 'template', 'template', 'template'],
+            },
+            {
+                name: 'Ginnett',
+                badges: ['template', 'template', 'template', 'template'],
+            },
+        ],
+    },
     problem: {
         title: 'The Problem We Observed (Not Assumed)',
         intro:
-            "We didn't guess what users needed. We researched it. 300+ competitor reviews. 40+ screened user interviews. 100+ Reddit threads. Every assumption validated with data.",
+            "We didn't guess what users needed. We researched it. 300+ competitor reviews, surveys, usability tests, user interviews. 100+ Reddit threads. We did our best to map out any assumptions we had.",
         featuredQuote: {
             text: `I need to share my calendar with my unsupportive dad (he just needs to see I'm busy), my supportive stepmom (she gets event titles), my boyfriend (full details), and my best friend crashing at my place (she should see my plans). Existing apps make me choose: share everything or share nothing.`,
             attribution: 'Beta Tester, LGBTQ+ Community',

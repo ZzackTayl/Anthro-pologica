@@ -331,6 +331,7 @@
   /* Background will be set via style prop */
 }
 
+/* Hero Section styles */
 .hero-title-gradient {
   background: linear-gradient(135deg, var(--psychedelic-magenta), var(--psychedelic-cyan), var(--psychedelic-yellow), var(--psychedelic-orange));
   background-size: 300% 300%;
@@ -338,6 +339,80 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+}
+
+/* Team Card styles */
+.team-card {
+    background: rgba(26, 15, 46, 0.6);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--psychedelic-cyan);
+}
+
+.team-card-title {
+    color: var(--psychedelic-cyan);
+}
+
+.team-badge {
+    background: rgba(26, 15, 46, 0.8);
+    border: 1px solid var(--psychedelic-magenta);
+    color: var(--psychedelic-yellow);
+}
+
+/* Executive Summary styles */
+.executive-summary-section {
+    padding-top: 120px !important;
+    padding-bottom: 120px !important;
+}
+
+.executive-summary-hook {
+    margin-top: 40px !important;
+    margin-bottom: 80px !important;
+}
+
+/* Pain Point Card styles */
+.pain-point-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.pain-point-section {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pain-point-section:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* Problem Section styles */
+.problem-section-card {
+    background: rgba(26, 15, 46, 0.6);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--psychedelic-magenta);
+}
+
+.problem-section-title {
+    color: var(--psychedelic-magenta);
+}
+
+.problem-section-user-impact {
+    color: var(--psychedelic-orange);
+}
+
+.problem-section-our-approach {
+    color: var(--psychedelic-cyan);
+}
+
+.quote-section {
+    background: rgba(26, 15, 46, 0.8);
+    backdrop-filter: blur(10px);
+    border-left: 6px solid var(--psychedelic-cyan);
+}
+
+.quote-mark {
+    color: var(--psychedelic-cyan);
 }
 
 .hero-button {

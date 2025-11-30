@@ -25,7 +25,7 @@ export function CTASection({ title, sections, enableMotion = true }: CTASectionP
                             style={{
                                 width: `${300 + i * 150}px`,
                                 height: `${300 + i * 150}px`,
-                                borderColor: i % 2 === 0 ? 'var(--vibrant-magenta)' : 'var(--vibrant-cyan)',
+                                borderColor: i % 2 === 0 ? 'var(--psychedelic-magenta)' : 'var(--psychedelic-cyan)',
                             }}
                             animate={{
                                 scale: [1, 1.1, 1],
@@ -44,7 +44,7 @@ export function CTASection({ title, sections, enableMotion = true }: CTASectionP
                             style={{
                                 width: `${300 + i * 150}px`,
                                 height: `${300 + i * 150}px`,
-                                borderColor: i % 2 === 0 ? 'var(--vibrant-magenta)' : 'var(--vibrant-cyan)',
+                                borderColor: i % 2 === 0 ? 'var(--psychedelic-magenta)' : 'var(--psychedelic-cyan)',
                             }}
                         />
                     )
@@ -59,7 +59,7 @@ export function CTASection({ title, sections, enableMotion = true }: CTASectionP
                     className="groovy-text text-center mb-16"
                     style={{
                         fontSize: 'clamp(2.5rem, 6vw, 6rem)',
-                        background: 'linear-gradient(135deg, var(--vibrant-yellow), var(--vibrant-orange))',
+                        background: 'linear-gradient(135deg, var(--psychedelic-yellow), var(--psychedelic-orange))',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                         backgroundClip: 'text',

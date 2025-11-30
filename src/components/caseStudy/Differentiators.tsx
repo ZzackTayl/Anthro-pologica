@@ -23,7 +23,7 @@ export function Differentiators({ title, intro, items, enableMotion = true }: Di
                         className="groovy-text mb-6"
                         style={{
                             fontSize: 'clamp(2.5rem, 6vw, 6rem)',
-                            background: 'linear-gradient(135deg, var(--vibrant-magenta), var(--vibrant-orange))',
+                            background: 'linear-gradient(135deg, var(--psychedelic-magenta), var(--psychedelic-orange))',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',
                             backgroundClip: 'text',

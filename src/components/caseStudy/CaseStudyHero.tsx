@@ -80,7 +80,7 @@ export function CaseStudyHero({ title, subtitle, metrics, enableMotion = true }:
                         className="groovy-text mb-8"
                         style={{
                             fontSize: 'clamp(2.5rem, 8vw, 7rem)',
-                            background: 'linear-gradient(135deg, var(--vibrant-magenta), var(--vibrant-purple))',
+                            background: 'linear-gradient(135deg, var(--psychedelic-magenta), var(--psychedelic-purple))',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',
                             backgroundClip: 'text',

@@ -84,7 +84,7 @@ export function ResultsSection({ title, metrics, testimonial, enableMotion = tru
                     <motion.div
                         className="absolute top-1/3 right-1/4 w-[600px] h-[600px] rounded-full opacity-20"
                         style={{
-                            background: 'radial-gradient(circle, var(--vibrant-cyan), transparent)',
+                            background: 'radial-gradient(circle, var(--psychedelic-cyan), transparent)',
                             filter: 'blur(100px)',
                         }}
                         animate={{ scale: [1, 1.3, 1], rotate: [0, 90, 0] }}
@@ -94,7 +94,7 @@ export function ResultsSection({ title, metrics, testimonial, enableMotion = tru
                     <div
                         className="absolute top-1/3 right-1/4 w-[600px] h-[600px] rounded-full opacity-20"
                         style={{
-                            background: 'radial-gradient(circle, var(--vibrant-cyan), transparent)',
+                            background: 'radial-gradient(circle, var(--psychedelic-cyan), transparent)',
                             filter: 'blur(100px)',
                         }}
                     />
@@ -112,7 +112,7 @@ export function ResultsSection({ title, metrics, testimonial, enableMotion = tru
                         className="groovy-text mb-6"
                         style={{
                             fontSize: 'clamp(2.5rem, 6vw, 6rem)',
-                            background: 'linear-gradient(135deg, var(--vibrant-cyan), var(--vibrant-lime))',
+                            background: 'linear-gradient(135deg, var(--psychedelic-cyan), var(--psychedelic-lime))',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',
                             backgroundClip: 'text',
@@ -159,7 +159,7 @@ export function ResultsSection({ title, metrics, testimonial, enableMotion = tru
                     style={{
                         background: 'rgba(26, 15, 46, 0.8)',
                         backdropFilter: 'blur(10px)',
-                        border: '2px solid var(--vibrant-cyan)',
+                        border: '2px solid var(--psychedelic-cyan)',
                     }}
                 >
                     <blockquote>

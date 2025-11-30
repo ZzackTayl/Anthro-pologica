@@ -21,7 +21,7 @@ export function CaseStudyTimeline({ title, intro, phases, enableMotion = true }:
                     className="w-full h-full"
                     style={{
                         background:
-                            'repeating-linear-gradient(45deg, transparent, transparent 20px, var(--vibrant-cyan) 20px, var(--vibrant-cyan) 21px)',
+                            'repeating-linear-gradient(45deg, transparent, transparent 20px, var(--psychedelic-cyan) 20px, var(--psychedelic-cyan) 21px)',
                     }}
                 />
             </div>
@@ -38,7 +38,7 @@ export function CaseStudyTimeline({ title, intro, phases, enableMotion = true }:
                         className="groovy-text mb-6"
                         style={{
                             fontSize: 'clamp(2.5rem, 6vw, 6rem)',
-                            background: 'linear-gradient(135deg, var(--vibrant-orange), var(--vibrant-yellow))',
+                            background: 'linear-gradient(135deg, var(--psychedelic-orange), var(--psychedelic-yellow))',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',
                             backgroundClip: 'text',
