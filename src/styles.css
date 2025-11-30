@@ -369,6 +369,17 @@
     margin-bottom: 80px !important;
 }
 
+/* Executive Summary styles */
+.executive-summary-section {
+    padding-top: 120px !important;
+    padding-bottom: 120px !important;
+}
+
+.executive-summary-hook {
+    margin-top: 40px !important;
+    margin-bottom: 80px !important;
+}
+
 /* Pain Point Card styles */
 .pain-point-content {
     display: flex;
@@ -413,6 +424,11 @@
 
 .quote-mark {
     color: var(--psychedelic-cyan);
+}
+
+/* AI Workflow Section styles */
+.ai-workflow-steps {
+    margin-bottom: 8rem !important; /* Increased from default mb-20 (5rem) */
 }
 
 .hero-button {

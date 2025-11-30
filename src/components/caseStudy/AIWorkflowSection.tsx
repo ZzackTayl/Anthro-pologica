@@ -60,7 +60,7 @@ export function AIWorkflowSection({
                 </motion.div>
 
                 {/* Workflow Steps */}
-                <div className="grid md:grid-cols-3 gap-8 mb-20 relative">
+                <div className="grid md:grid-cols-3 gap-8 mb-20 ai-workflow-steps relative">
                     {/* Connecting Line (Desktop) */}
                     <div className="hidden md:block absolute top-12 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
 

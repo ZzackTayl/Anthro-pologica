@@ -16,7 +16,7 @@ export function CaseStudyTimeline({ title, intro, phases, enableMotion = true }:
     return (
         <section className="py-32 px-6 relative overflow-hidden">
             {/* Background pattern */}
-            <div className="absolute inset-0 opacity-5">
+            <div className="absolute inset-0 opacity-20">
                 <div
                     className="w-full h-full"
                     style={{
@@ -34,16 +34,7 @@ export function CaseStudyTimeline({ title, intro, phases, enableMotion = true }:
                     transition={enableMotion ? { duration: 0.8 } : undefined}
                     className="text-center mb-20"
                 >
-                    <h2
-                        className="groovy-text mb-6"
-                        style={{
-                            fontSize: 'clamp(2.5rem, 6vw, 6rem)',
-                            background: 'linear-gradient(135deg, var(--psychedelic-orange), var(--psychedelic-yellow))',
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
-                            backgroundClip: 'text',
-                        }}
-                    >
+                    <h2 className="groovy-text mb-6 hero-title-gradient">
                         {title}
                     </h2>
                     <p className="text-xl opacity-90 max-w-3xl mx-auto">{intro}</p>
@@ -85,7 +76,7 @@ export function CaseStudyTimeline({ title, intro, phases, enableMotion = true }:
 
                                 {/* Phase card */}
                                 <motion.div
-                                    className="p-6 rounded-2xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black"
+                                    className="p-4 rounded-2xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black"
                                     style={{
                                         background: 'rgba(26, 15, 46, 0.6)',
                                         backdropFilter: 'blur(10px)',
@@ -105,7 +96,7 @@ export function CaseStudyTimeline({ title, intro, phases, enableMotion = true }:
                                         }
                                     }}
                                 >
-                                    <p className="text-sm leading-relaxed mb-4 opacity-90">{phase.description}</p>
+                                    <p className="text-sm leading-relaxed mb-3 opacity-90">{phase.description}</p>
 
                                     <div className="flex items-center justify-between text-sm mb-2">
                                         <span className="font-semibold" style={{ color: phase.color }}>
@@ -131,7 +122,7 @@ export function CaseStudyTimeline({ title, intro, phases, enableMotion = true }:
                                         transition={{ duration: 0.3 }}
                                         className="overflow-hidden"
                                     >
-                                        <div className="pt-4 border-t border-white/10 space-y-3">
+                                        <div className="pt-3 border-t border-white/10 space-y-3">
                                             <div>
                                                 <h4 className="font-semibold text-sm mb-2 opacity-70">Key Activities:</h4>
                                                 <ul className="space-y-1">

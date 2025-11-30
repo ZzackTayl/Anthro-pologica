@@ -311,7 +311,7 @@ export const myOrbitCaseStudy: CaseStudyData = {
         ],
     },
     aiFramework: {
-        title: 'The Secret Sauce: Context Engineering',
+        title: 'The Secret Sauce: Using AI Intentionally',
         subtitle:
             "We didn't just prompt and pray. We developed a proprietary 'Context Engineering Framework' over months of iteration to ensure clean, enterprise-grade Flutter architecture.",
         steps: [
