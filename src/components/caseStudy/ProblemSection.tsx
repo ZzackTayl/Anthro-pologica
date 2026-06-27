@@ -47,7 +47,7 @@ export function ProblemSection({
                         "
                     </div>
                     <p className="text-xl md:text-2xl italic leading-relaxed mb-6 relative z-10">{featuredQuote.text}</p>
-                    <p className="text-right opacity-70">— {featuredQuote.attribution}</p>
+                    <p className="text-right opacity-70">{featuredQuote.attribution}</p>
                 </motion.div>
 
                 {/* Pain Points Grid */}

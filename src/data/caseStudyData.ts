@@ -145,7 +145,7 @@ export const myOrbitCaseStudy: CaseStudyData = {
     executiveSummary: {
         hook: "Most calendars are designed for a world that doesn't exist anymore: 9-to-5 work, traditional families, monogamous relationships, one way of experiencing time. We built something different.",
         context:
-            'In six months, three neurodivergent UX professionals built MyOrbit—a calendar and connection app redesigned for real human relationships—for $1,100 total spend. An app that would have cost $150,000 to develop two years ago. The difference? A custom AI-native development framework and rigorous UX methodology.',
+            'In six months, three neurodivergent UX professionals built MyOrbit, a calendar and connection app redesigned for real human relationships, for $1,100 total spend. An app that would have cost $150,000 to develop two years ago. The difference? A custom AI-native development framework and rigorous UX methodology.',
     },
     team: {
         title: 'The Team',
