@@ -107,9 +107,18 @@ export function SkillsSection({ enableMotion = true }: SkillsSectionProps) {
                 whileInView={enableMotion ? { opacity: 1, scale: 1, rotate: 0 } : undefined}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={enableMotion ? { duration: 0.6, delay: index * 0.05 } : undefined}
+                role="button"
+                tabIndex={0}
+                aria-expanded={isExpanded}
                 onClick={() =>
                   setExpandedIndex((previous) => (previous === index ? null : index))
                 }
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setExpandedIndex((previous) => (previous === index ? null : index));
+                  }
+                }}
                 className="relative cursor-pointer"
               >
               <motion.div

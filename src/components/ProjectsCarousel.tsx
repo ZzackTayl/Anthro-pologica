@@ -141,8 +141,6 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
         <div
           role="region"
           aria-label="Projects carousel"
-          aria-live="polite"
-          aria-atomic="false"
         >
           <div className="sr-only" aria-live="polite" aria-atomic="true">
             Viewing project {currentIndex + 1} of {projects.length}: {currentProject.title}

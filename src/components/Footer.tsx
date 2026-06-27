@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { FormEvent, useState } from 'react';
 import { Instagram, Linkedin, Heart, Settings } from 'lucide-react';
 import { useCanHover } from './ui/use-can-hover';
 
@@ -9,6 +10,12 @@ interface FooterProps {
 
 export function Footer({ enableMotion = true, onOpenAccessibilitySettings }: FooterProps) {
   const canHover = useCanHover();
+  const [email, setEmail] = useState('');
+  const [isSubscribing, setIsSubscribing] = useState(false);
+  const [subscribeStatus, setSubscribeStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
   const handleOpenAccessibilitySettings = () => {
     if (onOpenAccessibilitySettings) {
       onOpenAccessibilitySettings();
@@ -18,6 +25,57 @@ export function Footer({ enableMotion = true, onOpenAccessibilitySettings }: Foo
     localStorage.removeItem('anthropologica_visited');
     window.location.reload();
   };
+
+  const handleSubscribe = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!email || !email.includes('@')) {
+      setSubscribeStatus({ type: 'error', message: 'Please enter a valid email address.' });
+      return;
+    }
+
+    setIsSubscribing(true);
+    setSubscribeStatus({ type: null, message: '' });
+
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setSubscribeStatus({
+          type: 'success',
+          message: `Thank you for subscribing with ${email}! A welcome email is on the way.`,
+        });
+        setEmail('');
+      } else {
+        const errorMessage = data.error || 'There was an issue with your subscription.';
+        setSubscribeStatus({ type: 'error', message: `${errorMessage} Please try again.` });
+      }
+    } catch (error) {
+      console.error('Subscription error:', error);
+      setSubscribeStatus({
+        type: 'error',
+        message: 'There was a network error. Please check your connection and try again.',
+      });
+    } finally {
+      setIsSubscribing(false);
+    }
+  };
+
+  const quickLinks = [
+    { label: 'About', href: '#' },
+    { label: 'Services', href: '#' },
+    { label: 'Projects', href: '#projects-section' },
+    { label: 'Team', href: '#' },
+    { label: 'Contact', href: '#' },
+  ];
   const socialLinks = [
     { icon: Instagram, href: '#', color: 'var(--psychedelic-pink)', label: 'Visit our Instagram' },
     { icon: Linkedin, href: '#', color: 'var(--psychedelic-cyan)', label: 'Connect with us on LinkedIn' },
@@ -165,10 +223,10 @@ export function Footer({ enableMotion = true, onOpenAccessibilitySettings }: Foo
                 Quick Links
               </h4>
               <ul className="space-y-2">
-                {['About', 'Services', 'Projects', 'Team', 'Contact'].map((link, i) => (
-                  <motion.li key={i} whileHover={enableMotion && canHover ? { x: 5 } : undefined}>
-                    <a href="#" className="opacity-80 hover:opacity-100 transition-opacity">
-                      {link}
+                {quickLinks.map((link) => (
+                  <motion.li key={link.label} whileHover={enableMotion && canHover ? { x: 5 } : undefined}>
+                    <a href={link.href} className="opacity-80 hover:opacity-100 transition-opacity">
+                      {link.label}
                     </a>
                   </motion.li>
                 ))}
@@ -194,7 +252,7 @@ export function Footer({ enableMotion = true, onOpenAccessibilitySettings }: Foo
               <p className="opacity-80 mb-4">
                 Get our monthly newsletter with UX insights and neurodivergent design tips.
               </p>
-              <div className="flex flex-col sm:flex-row gap-2">
+              <form className="flex flex-col sm:flex-row gap-2" onSubmit={handleSubscribe} noValidate>
                 <label htmlFor="newsletter-email" className="sr-only">
                   Email address for newsletter subscription
                 </label>
@@ -202,10 +260,14 @@ export function Footer({ enableMotion = true, onOpenAccessibilitySettings }: Foo
                   id="newsletter-email"
                   type="email"
                   placeholder="your@email.com"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
                   className="flex-1 px-4 py-3 rounded-full bg-[var(--input-background)] border border-[var(--psychedelic-yellow)] text-foreground focus:outline-hidden focus:ring-2 focus:ring-[var(--psychedelic-yellow)]"
                   aria-label="Email address for newsletter subscription"
                 />
                 <motion.button
+                  type="submit"
+                  disabled={isSubscribing}
                   className="button-wave px-6 py-3 rounded-full whitespace-nowrap"
                   style={{
                     background: 'linear-gradient(135deg, var(--psychedelic-orange), var(--psychedelic-pink))',
@@ -215,49 +277,25 @@ export function Footer({ enableMotion = true, onOpenAccessibilitySettings }: Foo
                   whileHover={enableMotion && canHover ? { scale: 1.05 } : undefined}
                   whileTap={enableMotion ? { scale: 0.95 } : undefined}
                   transition={enableMotion ? { duration: 0.3 } : undefined}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const input = e.currentTarget.parentElement?.querySelector('input[type="email"]') as HTMLInputElement;
-                    if (input && input.value && input.value.includes('@')) {
-                      // Show loading state
-                      const originalText = e.currentTarget.innerHTML;
-                      e.currentTarget.innerHTML = 'Subscribing...';
-                      
-                      fetch('/api/subscribe', {
-                        method: 'POST',
-                        headers: {
-                          'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ email: input.value })
-                      })
-                      .then(async response => {
-                        const data = await response.json();
-                        
-                        if (response.ok && data.success) {
-                          alert(`Thank you for subscribing with ${input.value}! A welcome email is on the way.`);
-                          input.value = '';
-                        } else {
-                          const errorMessage = data.error || 'There was an issue with your subscription.';
-                          alert(`Error: ${errorMessage} Please try again.`);
-                        }
-                      })
-                      .catch(error => {
-                        console.error('Subscription error:', error);
-                        alert('There was a network error. Please check your connection and try again.');
-                      })
-                      .finally(() => {
-                        // Restore original button text
-                        e.currentTarget.innerHTML = originalText;
-                      });
-                    } else {
-                      alert('Please enter a valid email address.');
-                      input?.focus();
-                    }
+                >
+                  {isSubscribing ? 'Subscribing...' : 'Subscribe'}
+                </motion.button>
+              </form>
+              {subscribeStatus.type && (
+                <p
+                  role={subscribeStatus.type === 'success' ? 'status' : 'alert'}
+                  aria-live={subscribeStatus.type === 'success' ? 'polite' : 'assertive'}
+                  aria-atomic="true"
+                  className="mt-3 text-sm"
+                  style={{
+                    color: subscribeStatus.type === 'success'
+                      ? 'var(--psychedelic-cyan)'
+                      : 'var(--psychedelic-orange)',
                   }}
                 >
-                  Subscribe
-                </motion.button>
-              </div>
+                  {subscribeStatus.message}
+                </p>
+              )}
             </motion.div>
           </div>
 

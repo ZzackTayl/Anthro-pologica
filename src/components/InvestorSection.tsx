@@ -122,6 +122,7 @@ export function InvestorSection({ enableMotion = true }: InvestorSectionProps) {
             transition={enableMotion ? { delay: 0.4 } : undefined}
           >
             <motion.button
+              type="button"
               className="relative px-12 py-6 overflow-hidden group button-wave"
               style={{
                 border: '3px solid var(--psychedelic-yellow)',
