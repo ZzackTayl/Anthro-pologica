@@ -164,7 +164,7 @@ export function ResultsSection({ title, metrics, testimonial, enableMotion = tru
                 >
                     <blockquote>
                         <p className="text-xl md:text-2xl italic leading-relaxed mb-6">{testimonial.text}</p>
-                        <footer className="text-right opacity-70">— {testimonial.attribution}</footer>
+                        <footer className="text-right opacity-70">{testimonial.attribution}</footer>
                     </blockquote>
                 </motion.div>
             </div>

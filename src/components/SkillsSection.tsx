@@ -76,11 +76,7 @@ export function SkillsSection({ enableMotion = true }: SkillsSectionProps) {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   return (
-    <section
-      id="services-section"
-      className="relative py-32 px-6 overflow-hidden"
-      aria-labelledby="skills-heading"
-    >
+    <section className="relative py-32 px-6 overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto">
         <motion.div
           initial={enableMotion ? { opacity: 0, y: 50 } : false}
@@ -89,7 +85,7 @@ export function SkillsSection({ enableMotion = true }: SkillsSectionProps) {
           transition={enableMotion ? { duration: 1 } : undefined}
           className="text-center mb-20"
         >
-          <h2 id="skills-heading" className="groovy-text text-6xl md:text-8xl mb-6">
+          <h2 className="groovy-text text-6xl md:text-8xl mb-6">
             <motion.span className="gradient-linear-cyan-mag-yellow">
               Our Superpowers
             </motion.span>
@@ -105,19 +101,25 @@ export function SkillsSection({ enableMotion = true }: SkillsSectionProps) {
             const isExpanded = expandedIndex === index;
 
             return (
-              <motion.button
+              <motion.div
                 key={index}
-                type="button"
                 initial={enableMotion ? { opacity: 0, scale: 0.8, rotate: -10 } : false}
                 whileInView={enableMotion ? { opacity: 1, scale: 1, rotate: 0 } : undefined}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={enableMotion ? { duration: 0.6, delay: index * 0.05 } : undefined}
+                role="button"
+                tabIndex={0}
+                aria-expanded={isExpanded}
                 onClick={() =>
                   setExpandedIndex((previous) => (previous === index ? null : index))
                 }
-                className="relative cursor-pointer text-left p-0 border-0 bg-transparent"
-                aria-expanded={isExpanded}
-                aria-controls={`skill-details-${index}`}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setExpandedIndex((previous) => (previous === index ? null : index));
+                  }
+                }}
+                className="relative cursor-pointer"
               >
               <motion.div
                 className="relative p-6 rounded-2xl overflow-hidden skill-card"
@@ -208,7 +210,6 @@ export function SkillsSection({ enableMotion = true }: SkillsSectionProps) {
 
                   {/* Details (expandable) */}
                   <motion.div
-                    id={`skill-details-${index}`}
                     initial={false}
                     animate={
                       enableMotion
@@ -254,7 +255,7 @@ export function SkillsSection({ enableMotion = true }: SkillsSectionProps) {
 
 
                 </motion.div>
-              </motion.button>
+              </motion.div>
             );
           })}
         </div>

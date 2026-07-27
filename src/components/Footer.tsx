@@ -1,5 +1,5 @@
-import { FormEvent, useState } from 'react';
 import { motion } from 'motion/react';
+import { FormEvent, useState } from 'react';
 import { Instagram, Linkedin, Heart, Settings } from 'lucide-react';
 import { useCanHover } from './ui/use-can-hover';
 
@@ -10,48 +10,32 @@ interface FooterProps {
 
 export function Footer({ enableMotion = true, onOpenAccessibilitySettings }: FooterProps) {
   const canHover = useCanHover();
-  const [newsletterEmail, setNewsletterEmail] = useState('');
-  const [isSubmittingNewsletter, setIsSubmittingNewsletter] = useState(false);
-  const [newsletterStatus, setNewsletterStatus] = useState<{
+  const [email, setEmail] = useState('');
+  const [isSubscribing, setIsSubscribing] = useState(false);
+  const [subscribeStatus, setSubscribeStatus] = useState<{
     type: 'success' | 'error' | null;
     message: string;
   }>({ type: null, message: '' });
-
-  const quickLinks = [
-    { label: 'About', href: '/#about-section' },
-    { label: 'Services', href: '/#services-section' },
-    { label: 'Projects', href: '/#projects-section' },
-    { label: 'Team', href: '/#team-section' },
-    { label: 'Contact', href: '/#contact-section' },
-  ];
-
   const handleOpenAccessibilitySettings = () => {
-    onOpenAccessibilitySettings?.();
+    if (onOpenAccessibilitySettings) {
+      onOpenAccessibilitySettings();
+      return;
+    }
+
+    localStorage.removeItem('Savoirity LLC_visited');
+    window.location.reload();
   };
 
-  const handleNewsletterSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const handleSubscribe = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const email = newsletterEmail.trim();
 
-    if (!email) {
-      setNewsletterStatus({
-        type: 'error',
-        message: 'Enter an email address to subscribe.',
-      });
+    if (!email || !email.includes('@')) {
+      setSubscribeStatus({ type: 'error', message: 'Please enter a valid email address.' });
       return;
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setNewsletterStatus({
-        type: 'error',
-        message: 'Enter a valid email address.',
-      });
-      return;
-    }
-
-    setIsSubmittingNewsletter(true);
-    setNewsletterStatus({ type: null, message: '' });
+    setIsSubscribing(true);
+    setSubscribeStatus({ type: null, message: '' });
 
     try {
       const response = await fetch('/api/subscribe', {
@@ -64,28 +48,34 @@ export function Footer({ enableMotion = true, onOpenAccessibilitySettings }: Foo
 
       const data = await response.json();
 
-      if (!response.ok || !data.success) {
-        throw new Error(data.error || 'There was an issue with your subscription.');
+      if (response.ok && data.success) {
+        setSubscribeStatus({
+          type: 'success',
+          message: `Thank you for subscribing with ${email}! A welcome email is on the way.`,
+        });
+        setEmail('');
+      } else {
+        const errorMessage = data.error || 'There was an issue with your subscription.';
+        setSubscribeStatus({ type: 'error', message: `${errorMessage} Please try again.` });
       }
-
-      setNewsletterStatus({
-        type: 'success',
-        message: 'Thanks for subscribing. A welcome email is on the way.',
-      });
-      setNewsletterEmail('');
     } catch (error) {
       console.error('Subscription error:', error);
-      setNewsletterStatus({
+      setSubscribeStatus({
         type: 'error',
-        message:
-          error instanceof Error
-            ? error.message
-            : 'There was a network error. Please try again.',
+        message: 'There was a network error. Please check your connection and try again.',
       });
     } finally {
-      setIsSubmittingNewsletter(false);
+      setIsSubscribing(false);
     }
   };
+
+  const quickLinks = [
+    { label: 'About', href: '#' },
+    { label: 'Services', href: '#' },
+    { label: 'Projects', href: '#projects-section' },
+    { label: 'Team', href: '#' },
+    { label: 'Contact', href: '#' },
+  ];
   const socialLinks = [
     { icon: Instagram, href: '#', color: 'var(--psychedelic-pink)', label: 'Visit our Instagram' },
     { icon: Linkedin, href: '#', color: 'var(--psychedelic-cyan)', label: 'Connect with us on LinkedIn' },
@@ -234,15 +224,14 @@ export function Footer({ enableMotion = true, onOpenAccessibilitySettings }: Foo
               </h4>
               <ul className="space-y-2">
                 {quickLinks.map((link) => (
-                  <motion.li key={link.href} whileHover={enableMotion && canHover ? { x: 5 } : undefined}>
+                  <motion.li key={link.label} whileHover={enableMotion && canHover ? { x: 5 } : undefined}>
                     <a href={link.href} className="opacity-80 hover:opacity-100 transition-opacity">
                       {link.label}
                     </a>
                   </motion.li>
                 ))}
                 <motion.li whileHover={enableMotion && canHover ? { x: 5 } : undefined}>
-                  <button
-                    type="button"
+                  <button 
                     onClick={handleOpenAccessibilitySettings}
                     className="opacity-80 hover:opacity-100 transition-opacity flex items-center gap-2"
                   >
@@ -263,24 +252,22 @@ export function Footer({ enableMotion = true, onOpenAccessibilitySettings }: Foo
               <p className="opacity-80 mb-4">
                 Get our monthly newsletter with UX insights and neurodivergent design tips.
               </p>
-              <form className="flex flex-col sm:flex-row gap-2" onSubmit={handleNewsletterSubmit}>
+              <form className="flex flex-col sm:flex-row gap-2" onSubmit={handleSubscribe} noValidate>
                 <label htmlFor="newsletter-email" className="sr-only">
                   Email address for newsletter subscription
                 </label>
                 <input
                   id="newsletter-email"
                   type="email"
-                  value={newsletterEmail}
-                  onChange={(event) => setNewsletterEmail(event.target.value)}
                   placeholder="your@email.com"
-                  required
-                  autoComplete="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
                   className="flex-1 px-4 py-3 rounded-full bg-[var(--input-background)] border border-[var(--psychedelic-yellow)] text-foreground focus:outline-hidden focus:ring-2 focus:ring-[var(--psychedelic-yellow)]"
-                  aria-describedby="newsletter-feedback"
+                  aria-label="Email address for newsletter subscription"
                 />
                 <motion.button
                   type="submit"
-                  disabled={isSubmittingNewsletter}
+                  disabled={isSubscribing}
                   className="button-wave px-6 py-3 rounded-full whitespace-nowrap"
                   style={{
                     background: 'linear-gradient(135deg, var(--psychedelic-orange), var(--psychedelic-pink))',
@@ -291,24 +278,24 @@ export function Footer({ enableMotion = true, onOpenAccessibilitySettings }: Foo
                   whileTap={enableMotion ? { scale: 0.95 } : undefined}
                   transition={enableMotion ? { duration: 0.3 } : undefined}
                 >
-                  {isSubmittingNewsletter ? 'Subscribing...' : 'Subscribe'}
+                  {isSubscribing ? 'Subscribing...' : 'Subscribe'}
                 </motion.button>
               </form>
-              <p
-                id="newsletter-feedback"
-                className="mt-3 min-h-[1.5rem] text-sm"
-                role="status"
-                aria-live="polite"
-                aria-atomic="true"
-                style={{
-                  color:
-                    newsletterStatus.type === 'error'
-                      ? 'var(--psychedelic-orange)'
-                      : 'var(--psychedelic-cyan)',
-                }}
-              >
-                {newsletterStatus.message}
-              </p>
+              {subscribeStatus.type && (
+                <p
+                  role={subscribeStatus.type === 'success' ? 'status' : 'alert'}
+                  aria-live={subscribeStatus.type === 'success' ? 'polite' : 'assertive'}
+                  aria-atomic="true"
+                  className="mt-3 text-sm"
+                  style={{
+                    color: subscribeStatus.type === 'success'
+                      ? 'var(--psychedelic-cyan)'
+                      : 'var(--psychedelic-orange)',
+                  }}
+                >
+                  {subscribeStatus.message}
+                </p>
+              )}
             </motion.div>
           </div>
 
