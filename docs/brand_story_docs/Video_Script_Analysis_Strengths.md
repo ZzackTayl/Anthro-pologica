@@ -131,7 +131,7 @@ This guide helps you understand what makes each script unique and when to use it
 
 **5. Builds Movement**
 - "Tired of the startup hype cycle"—resonates with people burned by traditional tech
-- Positions Anthropologica as alternative model
+- Positions Savoirity LLC as alternative model
 - Attracts idealistic builders who care about impact
 
 ### Ideal Audiences
@@ -222,7 +222,7 @@ This guide helps you understand what makes each script unique and when to use it
 **2. Movement Building**
 - "Tired of hype, tired of privacy invasion, tired of bad design"
 - Taps into real frustration many people have
-- Positions Anthropologica as *response to that frustration*
+- Positions Savoirity LLC as *response to that frustration*
 - Invites people into bigger mission, not just product
 
 **3. Values Alignment Screening**

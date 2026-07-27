@@ -97,7 +97,11 @@ export function ContactSection({ enableMotion = true }: ContactSectionProps) {
   };
 
   return (
-    <section className="relative py-32 px-6 overflow-hidden">
+    <section
+      id="contact-section"
+      className="relative py-32 px-6 overflow-hidden"
+      aria-labelledby="contact-heading"
+    >
       {/* Psychedelic background animation */}
       {enableMotion ? (
         <motion.div
@@ -171,7 +175,7 @@ export function ContactSection({ enableMotion = true }: ContactSectionProps) {
           transition={enableMotion ? { duration: 1 } : undefined}
           className="text-center mb-16"
         >
-          <h2 className="groovy-text text-6xl md:text-8xl mb-6">
+          <h2 id="contact-heading" className="groovy-text text-6xl md:text-8xl mb-6">
             <motion.span
               style={{
                 background: 'linear-gradient(135deg, var(--psychedelic-magenta), var(--psychedelic-yellow), var(--psychedelic-cyan))',
@@ -201,7 +205,7 @@ export function ContactSection({ enableMotion = true }: ContactSectionProps) {
               {
                 icon: Mail,
                 title: 'Email Us',
-                value: 'hello@anthropologica.design',
+                value: 'hello@human-drivensolutions.com',
                 color: 'var(--psychedelic-magenta)',
               },
               {

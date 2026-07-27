@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { MetricCard } from '../../data/caseStudyData';
+import type { MetricCard } from '../../data/types';
 
 interface CaseStudyHeroProps {
     title: string;

@@ -280,14 +280,14 @@ Here's why our moat isn't about features—it's about culture, methodology, and 
 
 2. **Research Rigor:** We didn't guess; we validated. Every feature traces back to user data. Most products can't say that. Replicating this takes time and discipline, not just money.
 
-3. **Values Alignment:** We've made hard commitments (never IPO, no data harvesting, living wages, LGBTQ+ and neurodivergence support). These aren't marketing; they're operational. Google could clone features, but they can't clone our values without a fundamental company restructuring.
+3. **Privacy-First Values:** We don't collect user data and have no desire to do so in the future. We anonymize data on our end and believe it's unethical for companies to take such private information without at least offering to pay users for it. These aren't marketing claims; they're operational commitments that Google can't make without fundamental restructuring.
 
 4. **Neurodivergent-First Design:** Built *for* this community, not *for* mainstream and retrofitted for accessibility. Every design decision reflects ND strengths. This requires lived experience, not just research.
 
 5. **Relationship-First Positioning:** While Google Calendar is tools-first, we're relationship-first. Different mental model. Hard to retrofit.
 
 **What Google *can* replicate:** The specific features (permissions, nudges, orbit visuals).
-**What Google *can't* replicate:** The culture, the community, the authenticity, the methodological rigor, the lived understanding of loneliness and relationship maintenance in 2025.
+**What Google *can't* replicate:** The culture, the community, the authenticity, the methodological rigor, the lived understanding of loneliness and relationship maintenance in 2025, and our ethical commitment to user privacy.
 
 ---
 
@@ -416,7 +416,7 @@ That's not luck. That's strategy.
 - Raise seed capital from aligned investors (if right partners appear)
 
 **Long-term (1-2 Years):**
-- Build Anthropologica into a venture studio launching 3-5 products
+- Build Savoirity LLC into a venture studio launching 3-5 products
 - Establish ourselves as thought leaders in UX + neurodivergence + AI
 - Create industry-standard methodology for how to do this right
 - Prove that values-first, user-first companies can compete with VC-backed giants

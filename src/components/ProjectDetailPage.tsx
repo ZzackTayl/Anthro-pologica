@@ -10,11 +10,16 @@ import { projectMedia } from '../data/projectMedia';
 interface ProjectDetailPageProps {
   project: Project;
   enableMotion?: boolean;
+  onOpenAccessibilitySettings?: () => void;
 }
 
 const projectMediaMap = projectMedia;
 
-export function ProjectDetailPage({ project, enableMotion = true }: ProjectDetailPageProps) {
+export function ProjectDetailPage({
+  project,
+  enableMotion = true,
+  onOpenAccessibilitySettings,
+}: ProjectDetailPageProps) {
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -313,7 +318,10 @@ export function ProjectDetailPage({ project, enableMotion = true }: ProjectDetai
       <InvestorSection enableMotion={enableMotion} />
 
       {/* Footer */}
-      <Footer enableMotion={enableMotion} />
+      <Footer
+        enableMotion={enableMotion}
+        onOpenAccessibilitySettings={onOpenAccessibilitySettings}
+      />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { useState } from 'react';
+import { useState, CSSProperties } from 'react';
 import { TimelinePhase } from '../../data/caseStudyData';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
@@ -42,10 +42,10 @@ export function CaseStudyTimeline({ title, intro, phases, enableMotion = true }:
 
                 {/* Timeline */}
                 <div className="relative">
-                    {/* Timeline line - desktop */}
-                    <div className="hidden md:block absolute top-12 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                    {/* Timeline line - vertical for desktop */}
+                    <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-white/20 to-transparent transform -translate-x-1/2" />
 
-                    <div className="space-y-12 md:space-y-0 md:grid md:grid-cols-4 md:gap-4">
+                    <div className="space-y-20">
                         {phases.map((phase, index) => (
                             <motion.div
                                 key={phase.id}
@@ -55,92 +55,98 @@ export function CaseStudyTimeline({ title, intro, phases, enableMotion = true }:
                                 transition={enableMotion ? { delay: index * 0.15, duration: 0.8 } : undefined}
                                 className="relative"
                             >
-                                {/* Timeline node */}
-                                <div className="flex flex-col items-center mb-6">
-                                    <motion.div
-                                        className="w-6 h-6 rounded-full border-4 mb-3 z-10"
-                                        style={{
-                                            borderColor: phase.color,
-                                            background: 'var(--background)',
-                                            boxShadow: `0 0 20px ${phase.color}80`,
-                                        }}
-                                        whileHover={enableMotion ? { scale: 1.2 } : undefined}
-                                    />
-                                    <div className="text-center">
-                                        <h3 className="font-semibold text-lg mb-1" style={{ color: phase.color }}>
-                                            {phase.title}
-                                        </h3>
-                                        <p className="text-sm opacity-70">{phase.timeframe}</p>
-                                    </div>
-                                </div>
-
-                                {/* Phase card */}
-                                <motion.div
-                                    className="p-4 rounded-2xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black"
-                                    style={{
-                                        background: 'rgba(26, 15, 46, 0.6)',
-                                        backdropFilter: 'blur(10px)',
-                                        border: `2px solid ${phase.color}`,
-                                        // Dynamic focus ring color matching the phase
-                                        ['--tw-ring-color' as any]: phase.color,
-                                    }}
-                                    whileHover={enableMotion ? { scale: 1.02, y: -5 } : undefined}
-                                    onClick={() => setExpandedPhase(expandedPhase === phase.id ? null : phase.id)}
-                                    role="button"
-                                    tabIndex={0}
-                                    aria-expanded={expandedPhase === phase.id}
-                                    onKeyDown={(e) => {
-                                        if (e.key === 'Enter' || e.key === ' ') {
-                                            e.preventDefault();
-                                            setExpandedPhase(expandedPhase === phase.id ? null : phase.id);
-                                        }
-                                    }}
-                                >
-                                    <p className="text-sm leading-relaxed mb-3 opacity-90">{phase.description}</p>
-
-                                    <div className="flex items-center justify-between text-sm mb-2">
-                                        <span className="font-semibold" style={{ color: phase.color }}>
-                                            Cost: {phase.cost}
-                                        </span>
-                                        <button
-                                            className="flex items-center gap-1 opacity-70 hover:opacity-100"
+                                <div className={`flex flex-col md:flex-row ${phase.position === 'left' ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8`}>
+                                    {/* Left/Right Card - depending on position */}
+                                    <div className="w-full md:w-5/12">
+                                        <motion.div
+                                            className="p-4 rounded-2xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black"
+                                            style={{
+                                                background: 'rgba(26, 15, 46, 0.6)',
+                                                backdropFilter: 'blur(10px)',
+                                                border: `2px solid ${phase.color}`,
+                                                // Dynamic focus ring color matching the phase
+                                                '--tw-ring-color': phase.color,
+                                            } as CSSProperties}
+                                            whileHover={enableMotion ? { scale: 1.02 } : undefined}
+                                            onClick={() => setExpandedPhase(expandedPhase === phase.id ? null : phase.id)}
+                                            role="button"
+                                            tabIndex={0}
                                             aria-expanded={expandedPhase === phase.id}
-                                            aria-label={expandedPhase === phase.id ? 'Show less' : 'Show more'}
+                                            onKeyDown={(e) => {
+                                                if (e.key === 'Enter' || e.key === ' ') {
+                                                    e.preventDefault();
+                                                    setExpandedPhase(expandedPhase === phase.id ? null : phase.id);
+                                                }
+                                            }}
                                         >
-                                            {expandedPhase === phase.id ? 'Less' : 'More'}
-                                            {expandedPhase === phase.id ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                                        </button>
+                                            <div className="text-center md:text-left">
+                                                <h3 className="font-semibold text-lg mb-1" style={{ color: phase.color }}>
+                                                    {phase.title}
+                                                </h3>
+                                                <p className="text-sm opacity-70 mb-2">{phase.timeframe}</p>
+                                                <p className="text-sm leading-relaxed mb-3 opacity-90">{phase.description}</p>
+
+                                                <div className="flex items-center justify-between text-sm mb-2">
+                                                    <span className="font-semibold" style={{ color: phase.color }}>
+                                                        Cost: {phase.cost}
+                                                    </span>
+                                                    <span
+                                                        className="flex items-center gap-1 opacity-70"
+                                                        aria-hidden="true"
+                                                    >
+                                                        {expandedPhase === phase.id ? 'Less' : 'More'}
+                                                        {expandedPhase === phase.id ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                                                    </span>
+                                                </div>
+
+                                                {/* Expandable details */}
+                                                <motion.div
+                                                    initial={false}
+                                                    animate={{
+                                                        height: expandedPhase === phase.id ? 'auto' : 0,
+                                                        opacity: expandedPhase === phase.id ? 1 : 0,
+                                                    }}
+                                                    transition={{ duration: 0.3 }}
+                                                    className="overflow-hidden"
+                                                >
+                                                    <div className="pt-3 border-t border-white/10 space-y-3">
+                                                        <div>
+                                                            <h4 className="font-semibold text-sm mb-2 opacity-70">Key Activities:</h4>
+                                                            <ul className="space-y-1">
+                                                                {phase.keyActivities.map((activity: string, i: number) => (
+                                                                    <li key={i} className="text-sm opacity-80 flex items-start">
+                                                                        <span className="mr-2 mt-1.5 w-1 h-1 rounded-full bg-current shrink-0" />
+                                                                        {activity}
+                                                                    </li>
+                                                                ))}
+                                                            </ul>
+                                                        </div>
+                                                        <div>
+                                                            <h4 className="font-semibold text-sm mb-1 opacity-70">Outcome:</h4>
+                                                            <p className="text-sm opacity-80">{phase.outcome}</p>
+                                                        </div>
+                                                    </div>
+                                                </motion.div>
+                                            </div>
+                                        </motion.div>
                                     </div>
 
-                                    {/* Expandable details */}
-                                    <motion.div
-                                        initial={false}
-                                        animate={{
-                                            height: expandedPhase === phase.id ? 'auto' : 0,
-                                            opacity: expandedPhase === phase.id ? 1 : 0,
-                                        }}
-                                        transition={{ duration: 0.3 }}
-                                        className="overflow-hidden"
-                                    >
-                                        <div className="pt-3 border-t border-white/10 space-y-3">
-                                            <div>
-                                                <h4 className="font-semibold text-sm mb-2 opacity-70">Key Activities:</h4>
-                                                <ul className="space-y-1">
-                                                    {phase.keyActivities.map((activity, i) => (
-                                                        <li key={i} className="text-sm opacity-80 flex items-start">
-                                                            <span className="mr-2 mt-1.5 w-1 h-1 rounded-full bg-current shrink-0" />
-                                                            {activity}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                            <div>
-                                                <h4 className="font-semibold text-sm mb-1 opacity-70">Outcome:</h4>
-                                                <p className="text-sm opacity-80">{phase.outcome}</p>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-                                </motion.div>
+                                    {/* Timeline node */}
+                                    <div className="flex-1 md:w-2/12 flex justify-center items-center">
+                                        <motion.div
+                                            className="w-6 h-6 rounded-full border-4"
+                                            style={{
+                                                borderColor: phase.color,
+                                                background: 'var(--background)',
+                                                boxShadow: `0 0 20px ${phase.color}80`,
+                                            }}
+                                            whileHover={enableMotion ? { scale: 1.2 } : undefined}
+                                        />
+                                    </div>
+
+                                    {/* Spacer to balance the layout */}
+                                    <div className="w-full md:w-5/12" />
+                                </div>
                             </motion.div>
                         ))}
                     </div>

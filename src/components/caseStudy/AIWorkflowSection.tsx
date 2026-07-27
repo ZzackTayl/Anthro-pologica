@@ -65,7 +65,7 @@ export function AIWorkflowSection({
                     <div className="hidden md:block absolute top-12 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
 
                     {steps.map((step, index) => {
-                        const IconComponent = ICON_MAP[step.icon] || Cpu;
+                        const IconComponent = (step.icon && ICON_MAP[step.icon]) || Cpu;
 
                         return (
                             <motion.div

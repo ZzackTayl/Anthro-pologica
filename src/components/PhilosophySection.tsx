@@ -19,7 +19,12 @@ export function PhilosophySection({ enableMotion = true }: PhilosophySectionProp
   const y = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [100, 0, 0, -100]);
 
   return (
-    <section ref={ref} className="relative py-32 px-6 overflow-hidden">
+    <section
+      id="about-section"
+      ref={ref}
+      className="relative py-32 px-6 overflow-hidden"
+      aria-labelledby="philosophy-heading"
+    >
       {/* Animated background */}
       {enableMotion ? (
         <motion.div
@@ -84,7 +89,7 @@ export function PhilosophySection({ enableMotion = true }: PhilosophySectionProp
           transition={enableMotion ? { duration: 1 } : undefined}
           className="text-center mb-16"
         >
-          <h2 className="groovy-text text-6xl md:text-8xl mb-6">
+          <h2 id="philosophy-heading" className="groovy-text text-6xl md:text-8xl mb-6">
             <motion.span className="gradient-linear-pink-cyan">
               Our Philosophy
             </motion.span>

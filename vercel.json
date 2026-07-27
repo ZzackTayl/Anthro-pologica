@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "anthropologica",
+  "name": "Savoirity LLC",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",

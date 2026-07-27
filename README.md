@@ -1,4 +1,4 @@
-# Anthro-pologica UX Agency Website
+# Savoirity LLC UX Agency Website
 
 This is a psychedelic UX agency website with advanced accessibility features and Resend-powered email functionality. The original project is available at https://www.figma.com/design/33JjjugerNR4ZR8zT2GLY9/Psychedelic-UX-Agency-Website.
 
@@ -13,13 +13,13 @@ This is a psychedelic UX agency website with advanced accessibility features and
 
 1. **Get a Resend Account**: Visit [resend.com](https://resend.com) and create an account
 2. **Get Your API Key**: Copy your API key from the dashboard
-3. **Verify Your Domain**: Add and verify your domain (e.g., `anthropologica.design`) in the Resend dashboard
+3. **Verify Your Domain**: Add and verify your domain (e.g., `Savoirity LLC.design`) in the Resend dashboard
 4. **Configure Environment Variables**: Create a `.env` file in the project root:
 
 ```env
 RESEND_API_KEY=your_actual_resend_api_key_here
-EMAIL_FROM=hello@anthropologica.design  # Replace with your verified domain
-CONTACT_EMAIL=contact@anthropologica.design  # Where to receive contact form submissions
+EMAIL_FROM=hello@human-drivensolutions.com  # Replace with your verified domain
+CONTACT_EMAIL=hello@human-drivensolutions.com  # Where to receive contact form submissions
 ```
 
 ## Running the Application

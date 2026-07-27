@@ -53,7 +53,7 @@ After analyzing the citation guide, ready-to-use citations, and content angles d
 
 ### SECTION 2: The Research Foundation
 **Position:** Early in the narrative, after hook
-**Narrative Purpose:** Establish Anthropologica's research-driven credibility
+**Narrative Purpose:** Establish Savoirity LLC's research-driven credibility
 **Content Strategy:** Show the methodology that prevented MyOrbit from becoming another failed product
 
 #### Recommended Content:
@@ -265,7 +265,7 @@ After analyzing the citation guide, ready-to-use citations, and content angles d
     - MyOrbit approach: Strategic use in development only
   - Callout: "We use AI to build faster, not to replace human understanding"
 - **Citations:** Listed below chart with links
-- **Why here:** Shows depth of research even about AI use. Demonstrates Anthropologica knows the data and made informed decisions.
+- **Why here:** Shows depth of research even about AI use. Demonstrates Savoirity LLC knows the data and made informed decisions.
 - **Technical specs:** Horizontal bar chart, color-coded by study, clean labels
 
 ---
@@ -470,7 +470,7 @@ After analyzing the citation guide, ready-to-use citations, and content angles d
 
 ### Storytelling Flow:
 1. **Open with tension:** The 95% failure rate
-2. **Introduce the hero's journey:** How Anthropologica approached differently
+2. **Introduce the hero's journey:** How Savoirity LLC approached differently
 3. **Show the evidence:** Research process and findings
 4. **Reveal the solution:** MyOrbit features tied to insights
 5. **Demonstrate impact:** Early results and user stories
@@ -578,7 +578,7 @@ After analyzing the citation guide, ready-to-use citations, and content angles d
 
 ### On-Site Placement:
 - Link from main navigation ("Our Work" or "Case Studies")
-- Feature on Anthropologica homepage
+- Feature on Savoirity LLC homepage
 - Link from MyOrbit product page ("See How We Built This")
 - Include in About page narrative
 

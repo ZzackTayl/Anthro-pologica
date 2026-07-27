@@ -664,9 +664,9 @@ const selectedProject = selectedProjectId ? getProjectById(selectedProjectId) : 
 {/* ADD THIS */}
 useEffect(() => {
   if (currentRoute === 'project' && selectedProject) {
-    document.title = `${selectedProject.title} - Anthro-pologica UX`;
+    document.title = `${selectedProject.title} - Savoirity LLC UX`;
   } else {
-    document.title = 'Anthro-pologica UX - Human-Centered Design & Neurodivergent Insight';
+    document.title = 'Savoirity LLC UX - Human-Centered Design & Neurodivergent Insight';
   }
 }, [currentRoute, selectedProject]);
 ```
@@ -740,10 +740,10 @@ const DEFAULT_PREFERENCES: AccessibilityPreferences = {
 ```tsx
 export const projects: Project[] = [
   {
-    id: 'anthropologica',
-    title: 'Anthro-pologica',
+    id: 'Savoirity LLC',
+    title: 'Savoirity LLC',
     // ADD THIS
-    alt: 'Screenshot of Anthro-pologica website showing colorful psychedelic design with gradient text',
+    alt: 'Screenshot of Savoirity LLC website showing colorful psychedelic design with gradient text',
     tagline: '...',
   },
   // ... do this for all projects

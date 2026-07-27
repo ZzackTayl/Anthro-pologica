@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
-import { CostBreakdownItem } from '../../data/caseStudyData';
+import type { CostBreakdownItem } from '../../data/types';
 
 interface CostBreakdownProps {
     title: string;

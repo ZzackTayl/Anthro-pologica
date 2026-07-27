@@ -1,6 +1,6 @@
-# Setting up Resend for Anthro-pologica
+# Setting up Resend for Savoirity LLC
 
-This guide explains how to set up Resend to handle email functionality in the Anthro-pologica website.
+This guide explains how to set up Resend to handle email functionality in the Savoirity LLC website.
 
 ## 1. Get a Resend API Key
 
@@ -10,7 +10,7 @@ This guide explains how to set up Resend to handle email functionality in the An
 
 ## 2. Configure Your Domain
 
-1. In your Resend dashboard, add and verify your domain (e.g., `anthropologica.design`)
+1. In your Resend dashboard, add and verify your domain (e.g., `Savoirity LLC.design`)
 2. Follow the DNS verification steps provided by Resend
 3. Once verified, you can use that domain as your sender
 
@@ -20,8 +20,8 @@ Create or update the `.env` file in the project root:
 
 ```env
 RESEND_API_KEY=your_actual_resend_api_key_here
-EMAIL_FROM=hello@anthropologica.design  # Replace with your verified domain
-CONTACT_EMAIL=contact@anthropologica.design  # Where to send contact form submissions
+EMAIL_FROM=hello@human-drivensolutions.com  # Replace with your verified domain
+CONTACT_EMAIL=hello@human-drivensolutions.com  # Where to send contact form submissions
 ```
 
 ## 4. Install Dependencies

@@ -1,6 +1,6 @@
-# Development Setup for Anthro-pologica with Resend
+# Development Setup for Savoirity LLC with Resend
 
-This document explains how to set up the Anthro-pologica website with Resend email functionality for development and production.
+This document explains how to set up the Savoirity LLC website with Resend email functionality for development and production.
 
 ## Prerequisites
 
@@ -16,7 +16,7 @@ This document explains how to set up the Anthro-pologica website with Resend ema
    - Create and copy your API key
 
 2. **Configure your domain** (required for production):
-   - In your Resend dashboard, add and verify your domain (e.g., `anthropologica.design`)
+   - In your Resend dashboard, add and verify your domain (e.g., `Savoirity LLC.design`)
    - Follow DNS verification steps provided by Resend
    - Once verified, you can send emails from that domain
 
@@ -26,8 +26,8 @@ This document explains how to set up the Anthro-pologica website with Resend ema
 
    ```env
    RESEND_API_KEY=your_resend_api_key_here
-   EMAIL_FROM=hello@anthropologica.design  # Replace with your verified domain
-   CONTACT_EMAIL=contact@anthropologica.design  # Replace with your business email
+   EMAIL_FROM=hello@human-drivensolutions.com  # Replace with your verified domain
+   CONTACT_EMAIL=hello@human-drivensolutions.com  # Replace with your business email
    ```
 
 ## Running the Application

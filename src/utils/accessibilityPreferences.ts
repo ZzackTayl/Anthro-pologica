@@ -1,6 +1,6 @@
 import type { AccessibilityPreferences } from '../components/AccessibilityPreferences';
 
-export const ACCESSIBILITY_STORAGE_KEY = 'anthropologica_preferences';
+export const ACCESSIBILITY_STORAGE_KEY = 'Savoirity LLC_preferences';
 
 export const DEFAULT_ACCESSIBILITY_PREFERENCES: AccessibilityPreferences = {
   motion: true,

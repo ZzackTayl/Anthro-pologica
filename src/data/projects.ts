@@ -90,7 +90,7 @@ export const projects: Project[] = [
       'Featured in "Best Tools for Distributed Teams 2025"',
     ],
     liveUrl: 'https://spoonsaver.com',
-    demoUrl: 'https://demo.spoonsaver.anthropologica.design',
+    demoUrl: 'https://demo.spoonsaver.Savoirity LLC.design',
     timeline: '9 months (Q3 2024 - Q1 2025)',
     team: ['Zack Stewart (Product Strategy)', 'Ginnett Codington (Lead Design)', 'Clare DeMarco (User Testing)'],
     techStack: ['Next.js', 'WebSockets', 'PostgreSQL', 'OpenAI API', 'Canvas API'],

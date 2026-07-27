@@ -1,4 +1,4 @@
-# Anthropologica Content Angles: 8 Ways to Share Your Story Across Platforms & Formats
+# Savoirity LLC Content Angles: 8 Ways to Share Your Story Across Platforms & Formats
 
 **Goal:** Repurpose your core narrative across different audiences, formats, and platforms without overselling or burning out your team.
 
@@ -112,7 +112,7 @@
 - **Event types:** Design conferences (ADPList, Design Summit), startup conferences (Web Summit), disability/accessibility conferences (IACP), neurodivergent-focused events
 - **Title:** "The Secret Weapon Nobody's Using: How Neurodivergent Teams Build Better Products"
 - **30-min talk breakdown:**
-  - 5 min: Your origin story (why you started Anthropologica)
+  - 5 min: Your origin story (why you started Savoirity LLC)
   - 8 min: The research problem (MyOrbit case study)
   - 8 min: How neurodivergence shaped your solutions
   - 5 min: Structural changes that made it work
@@ -292,7 +292,7 @@
 
 **Content Ideas:**
 
-**A. "Why You Should Build With Anthropologica"**
+**A. "Why You Should Build With Savoirity LLC"**
 - What working here is actually like (async, ND-friendly, values-first)
 - What you get (early equity, meaningful work, community, mission alignment)
 - What we need right now (Flutter devs, marketing, content creators)
@@ -307,7 +307,7 @@
 
 **C. Team Member Stories** (Ongoing)
 - "How I Went From Contractor to Core Team"
-- "Why I Left a 'Better' Job to Build With Anthropologica"
+- "Why I Left a 'Better' Job to Build With Savoirity LLC"
 - "What Working Here Actually Looks Like"
 - Short video (3-5 min) or blog post
 - Authentic testimonials from collaborators

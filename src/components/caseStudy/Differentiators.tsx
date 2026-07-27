@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
-import { Differentiator } from '../../data/caseStudyData';
-import * as Icons from 'lucide-react';
+import { Differentiator } from '../../data/types';
+import { getIcon } from '../../utils/iconMap';
 
 interface DifferentiatorsProps {
     title: string;
@@ -36,7 +36,7 @@ export function Differentiators({ title, intro, items, enableMotion = true }: Di
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {items.map((item, index) => {
-                        const IconComponent = (Icons as any)[item.icon] || Icons.Circle;
+                        const IconComponent = getIcon(item.icon);
 
                         return (
                             <motion.div

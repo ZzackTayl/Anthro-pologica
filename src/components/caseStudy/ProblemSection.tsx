@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { PainPoint } from '../../data/caseStudyData';
+import type { PainPoint } from '../../data/types';
 
 interface ProblemSectionProps {
     title: string;

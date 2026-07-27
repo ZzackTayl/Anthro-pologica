@@ -1,4 +1,4 @@
-# Comprehensive Summary: Everything You've Shared About Anthropologica & MyOrbit
+# Comprehensive Summary: Everything You've Shared About Savoirity LLC & MyOrbit
 
 ---
 
@@ -11,7 +11,7 @@
 - Instead of traditional job hunting, the three of you decided to bootstrap a venture studio
 - All three co-founders are neurodivergent; two are LGBTQ+; one is Gen X; more than two are polyamorous
 
-### **Anthropologica: The Venture Studio**
+### **Savoirity LLC: The Venture Studio**
 **Mission:** Build products, apps, or services that solve real user problems at fair prices, with more personalization and accessibility options, and overall authenticity
 
 **Core Values:**
@@ -363,7 +363,7 @@ In a world where anyone can build an app quickly (thanks to AI), **only products
 
 ---
 
-## PART 13: DIFFERENTIATORS (Why Anthropologica Matters)
+## PART 13: DIFFERENTIATORS (Why Savoirity LLC Matters)
 
 1. **Research-backed, not assumption-based** → Every decision traced back to user data
 2. **Neurodivergent team structure** → Diverge/converge methodology amplifies innovation
@@ -384,7 +384,7 @@ In a world where anyone can build an app quickly (thanks to AI), **only products
 - Neurodivergent and queer communities especially vulnerable to predatory design
 - There's a better way: build with people, respect privacy, support causes they care about, design for accessibility from day one
 
-### **The Future Anthropologica is Building**
+### **The Future Savoirity LLC is Building**
 - Proof point that you don't need VC to build meaningful products
 - Model for how neurodivergent teams can lead innovation
 - Companies that win: user-centered, relationship-first, research-backed, intentionally using new tools

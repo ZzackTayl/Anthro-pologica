@@ -1,6 +1,6 @@
 # How Three Neurodivergent UX Designers Built a $0-Budget Venture Studio and Landed on the Real Future of Product Design
 
-## Anthropologica's Journey from Research to Action: Where Neurodivergence, UX, and Intentional AI Create Products People Actually Want
+## Savoirity LLC's Journey from Research to Action: Where Neurodivergence, UX, and Intentional AI Create Products People Actually Want
 
 ---
 
@@ -10,7 +10,7 @@ In May 2025, two neurodivergent designers couldn't find work that aligned with t
 
 So we did what many neurodivergent people do when the traditional path doesn't fit: we built our own path.
 
-We founded **Anthropologica**, a UX venture studio built on a radical premise: that in a world where anyone can build an app, only those that *connect deeply with real users* will survive. That neurodivergence isn't a barrier to entrepreneurship—it's a competitive advantage. That AI is best used not as a replacement for human judgment, but as a tool for accelerating intentional, research-backed design decisions.
+We founded **Savoirity LLC**, a UX venture studio built on a radical premise: that in a world where anyone can build an app, only those that *connect deeply with real users* will survive. That neurodivergence isn't a barrier to entrepreneurship—it's a competitive advantage. That AI is best used not as a replacement for human judgment, but as a tool for accelerating intentional, research-backed design decisions.
 
 Six months later, we're soft-launching **MyOrbit**, a calendar and connection app designed for neurodivergent users, Gen Z, and people navigating complex relationship structures. We've tested it with hundreds of users, iterated based on actual research, and built something that feels genuinely different from every calendar app on the market.
 
@@ -82,7 +82,7 @@ For polyamorous and neurodivergent users, this is compounded. Managing time acro
 
 ## How We Built It: The UX Method Works When You Actually Use It
 
-This is where Anthropologica's approach diverges from typical startup methodology. We didn't build a prototype and hope. We spent the first two months doing deep research, competitor analysis, and assumption mapping—the unglamorous, often-skipped part of product design.
+This is where Savoirity LLC's approach diverges from typical startup methodology. We didn't build a prototype and hope. We spent the first two months doing deep research, competitor analysis, and assumption mapping—the unglamorous, often-skipped part of product design.
 
 ### **Research That Shaped Every Decision**
 
@@ -160,7 +160,7 @@ This isn't soft, feel-good stuff. It's operational efficiency. We ship faster be
 
 ---
 
-## What's Different About Anthropologica
+## What's Different About Savoirity LLC
 
 Most venture-backed startups follow the same playbook: raise money, move fast, break things, scale first, ask questions later. That approach assumes every user is the same and that speed matters more than depth.
 
@@ -254,7 +254,7 @@ The good news: there's a better way. It's slower. It's more intentional. It requ
 
 MyOrbit launches in 10 days. SpoonSaver—an app helping neurodivergent users navigate mental energy and share that data with therapists/coaches—is in the pipeline, waiting for prioritization.
 
-But more broadly, Anthropologica is building something bigger than any single product: a model for how neurodivergent teams can build companies that matter. A proof point that you don't need venture funding to build something meaningful. That you don't need to compromise your values to succeed. That the future of product design is human-centered, relationship-first, and rooted in actual user needs.
+But more broadly, Savoirity LLC is building something bigger than any single product: a model for how neurodivergent teams can build companies that matter. A proof point that you don't need venture funding to build something meaningful. That you don't need to compromise your values to succeed. That the future of product design is human-centered, relationship-first, and rooted in actual user needs.
 
 We're inviting people into this experiment. If you're a designer tired of the startup hype cycle. If you're a developer who wants your work to matter. If you're a marketer or community builder who wants to reach people authentically. If you're someone who's felt outside the default path and want to build something different—**come build with us.**
 
@@ -269,6 +269,6 @@ We're one of those teams. And we're just getting started.
 ## Join Us
 
 - **Discord:** [Community link]
-- **Website:** [Anthropologica link]
+- **Website:** [Savoirity LLC link]
 - **MyOrbit Beta:** Available in 10 days
 - **Open Roles:** Marketing Strategy, Flutter Development, Content Creation, Community Partnerships

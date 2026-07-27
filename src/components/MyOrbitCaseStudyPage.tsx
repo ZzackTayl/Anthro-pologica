@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react';
-import { myOrbitCaseStudy } from '../data/caseStudyData';
+import { caseStudyData } from '../data/caseStudyData';
+import type { TeamMember } from '../data/types';
 import { CaseStudyHero } from './caseStudy/CaseStudyHero';
 import { Footer } from './Footer';
 
@@ -28,6 +29,7 @@ const CTASection = lazy(() =>
 
 interface MyOrbitCaseStudyPageProps {
     enableMotion?: boolean;
+    onOpenAccessibilitySettings?: () => void;
 }
 
 function SectionSkeleton() {
@@ -38,8 +40,11 @@ function SectionSkeleton() {
     );
 }
 
-export function MyOrbitCaseStudyPage({ enableMotion = true }: MyOrbitCaseStudyPageProps) {
-    const data = myOrbitCaseStudy;
+export function MyOrbitCaseStudyPage({
+    enableMotion = true,
+    onOpenAccessibilitySettings,
+}: MyOrbitCaseStudyPageProps) {
+    const data = caseStudyData;
 
     return (
         <div className="pt-32">
@@ -64,16 +69,16 @@ export function MyOrbitCaseStudyPage({ enableMotion = true }: MyOrbitCaseStudyPa
                 <div className="max-w-6xl mx-auto">
                     <h2 className="text-3xl font-bold text-center mb-12 groovy-text hero-title-gradient">The Team</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {data.team.members.map((member, index) => (
-                            <div 
-                                key={index} 
+                        {data.team.members.map((member: TeamMember, index: number) => (
+                            <div
+                                key={index}
                                 className="p-8 rounded-2xl backdrop-blur-sm team-card"
                             >
                                 <h3 className="text-2xl font-bold mb-4 team-card-title">{member.name}</h3>
                                 <div className="flex flex-wrap justify-center gap-3">
-                                    {member.badges.map((badge, badgeIndex) => (
-                                        <span 
-                                            key={badgeIndex} 
+                                    {member.badges.map((badge: string, badgeIndex: number) => (
+                                        <span
+                                            key={badgeIndex}
                                             className="px-4 py-2 rounded-full text-sm team-badge"
                                         >
                                             {badge}
@@ -155,7 +160,10 @@ export function MyOrbitCaseStudyPage({ enableMotion = true }: MyOrbitCaseStudyPa
             </Suspense>
 
             {/* Footer */}
-            <Footer enableMotion={enableMotion} />
+            <Footer
+                enableMotion={enableMotion}
+                onOpenAccessibilitySettings={onOpenAccessibilitySettings}
+            />
         </div>
     );
 }

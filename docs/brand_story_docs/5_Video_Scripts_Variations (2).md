@@ -105,7 +105,7 @@ We're launching soon. If you're interested in how intentional UX and neurodiverg
 
 We're three neurodivergent designers. Two of us couldn't find work that aligned with our values. One of us (me) was experimenting with AI in my off-hours. So we said, "Why wait for the perfect job? Let's build it."
 
-We're building **MyOrbit**, a calendar app launching soon. But more than that, we're building **Anthropologica**—a venture studio for people who want to create products and companies we'd actually want to use and work at.
+We're building **MyOrbit**, a calendar app launching soon. But more than that, we're building **Savoirity LLC**—a venture studio for people who want to create products and companies we'd actually want to use and work at.
 
 Here's what's wild: Being neurodivergent isn't a liability. It's our superpower.
 
@@ -201,7 +201,7 @@ The ones that fail? They chase hype. They ignore research. They treat users as d
 
 What I've learned: in a world where anyone can build an app, only the products that *connect deeply* with real users survive.
 
-That's why we started **Anthropologica**. We're three neurodivergent designers who are tired of the status quo. Tired of apps that don't respect your privacy. Tired of calendars that don't understand your relationships. Tired of companies that prioritize growth over *actually helping people*.
+That's why we started **Savoirity LLC**. We're three neurodivergent designers who are tired of the status quo. Tired of apps that don't respect your privacy. Tired of calendars that don't understand your relationships. Tired of companies that prioritize growth over *actually helping people*.
 
 **MyOrbit** is our proof point. A calendar designed for real human relationships. For neurodivergent brains. For queer folks managing complex sharing needs. For people who want privacy, not surveillance.
 
@@ -215,7 +215,7 @@ If you believe design can be different—if you believe technology can be better
 - Opens with authority (5 years of research + pattern recognition)
 - States the clear pattern (listen = win, ignore = fail)
 - Names what's wrong with status quo (hype, harvest, disrespect)
-- Positions Anthropologica as response to that
+- Positions Savoirity LLC as response to that
 - Frames MyOrbit as proof of concept
 - Explicit about values (no unicorn chase, no IPO, trustworthy)
 - Calls to values-aligned people

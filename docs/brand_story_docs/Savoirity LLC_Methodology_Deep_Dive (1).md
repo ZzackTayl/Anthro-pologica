@@ -1,4 +1,4 @@
-# The Anthropologica Methodology: How to Build Products Right
+# The Savoirity LLC Methodology: How to Build Products Right
 ## A Deep-Dive into Our Process (Open-Sourced for Teams Wanting Better Results)
 
 ---

@@ -968,7 +968,7 @@ Watch our 10-minute walkthrough on YouTube showing how to customize this templat
 
 ## Support
 
-Questions? Join our Discord community or email hello@anthropologica.design
+Questions? Join our Discord community or email hello@human-drivensolutions.com
 
 ## License
 

@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import backgroundSand from '../assets/background_sand.webp';
 import { useCanHover } from './ui/use-can-hover';
+import { scrollToElementById } from '../utils/scroll';
 
 interface HeroSectionProps {
   enableMotion?: boolean;
@@ -109,10 +110,10 @@ export function HeroSection({ enableMotion = true }: HeroSectionProps) {
             href="#projects-section"
             onClick={(e) => {
               e.preventDefault();
-              const projectsSection = document.querySelector('#projects-section');
-              if (projectsSection) {
-                projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }
+              scrollToElementById('projects-section', {
+                enableMotion,
+                block: 'start',
+              });
             }}
             className="button-wave relative px-8 py-4 overflow-hidden group cursor-pointer hero-button inline-block text-center no-underline"
             whileHover={enableMotion && canHover ? { scale: 1.05 } : undefined}

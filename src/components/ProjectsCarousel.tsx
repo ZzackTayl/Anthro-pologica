@@ -75,7 +75,11 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
   const hasContextTags = contextTags.length > 0;
 
   return (
-    <section id="projects-section" className="relative py-32 px-6 pb-40 overflow-hidden">
+    <section
+      id="projects-section"
+      className="relative py-32 px-6 pb-40 overflow-hidden"
+      aria-labelledby="projects-heading"
+    >
       {/* Flowing background waves - only animate if motion enabled */}
       {enableMotion ? (
         <div className="absolute inset-0 overflow-hidden opacity-20">
@@ -138,15 +142,26 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
       )}
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        <div
-          role="region"
-          aria-label="Projects carousel"
-          aria-live="polite"
-          aria-atomic="false"
-        >
+          <div
+            role="region"
+            aria-label="Projects carousel"
+            aria-live="polite"
+            aria-atomic="false"
+            tabIndex={0}
+            onKeyDown={(event) => {
+              if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                paginate(-1);
+              } else if (event.key === 'ArrowRight') {
+                event.preventDefault();
+                paginate(1);
+              }
+            }}
+          >
           <div className="sr-only" aria-live="polite" aria-atomic="true">
             Viewing project {currentIndex + 1} of {projects.length}: {currentProject.title}
           </div>
+          <p className="sr-only">Use left and right arrow keys to switch projects.</p>
 
           <motion.div
             initial={enableMotion ? { opacity: 0, y: 50 } : false}
@@ -155,7 +170,7 @@ export function ProjectsCarousel({ onProjectClick, enableMotion = true }: Projec
             transition={enableMotion ? { duration: 1 } : undefined}
             className="text-center mb-20"
           >
-            <h2 className="groovy-text text-6xl md:text-8xl mb-6">
+            <h2 id="projects-heading" className="groovy-text text-6xl md:text-8xl mb-6">
               <motion.span
                 className="carousel-heading-gradient"
                 animate={enableMotion ? {

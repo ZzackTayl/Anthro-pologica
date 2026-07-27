@@ -52,9 +52,14 @@ interface TeamSectionProps {
 export function TeamSection({ enableMotion = true }: TeamSectionProps) {
   const canHover = useCanHover();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
 
   return (
-    <section className="relative py-32 px-6 overflow-hidden">
+    <section
+      id="team-section"
+      className="relative py-32 px-6 overflow-hidden"
+      aria-labelledby="team-heading"
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-20 md:opacity-20 opacity-10">
         {enableMotion ? (
@@ -85,7 +90,7 @@ export function TeamSection({ enableMotion = true }: TeamSectionProps) {
           transition={enableMotion ? { duration: 1 } : undefined}
           className="text-center mb-20"
         >
-          <h2 className="groovy-text text-6xl md:text-8xl mb-6">
+          <h2 id="team-heading" className="groovy-text text-6xl md:text-8xl mb-6">
             <motion.span className="gradient-linear-yellow-orange-pink">
               Meet The Team
             </motion.span>
@@ -97,7 +102,9 @@ export function TeamSection({ enableMotion = true }: TeamSectionProps) {
 
         <div className="grid md:grid-cols-3 gap-8 md:gap-12">
           {teamMembers.map((member, index) => {
-            const isActive = canHover ? hoveredIndex === index : true;
+            const isActive = canHover
+              ? hoveredIndex === index || focusedIndex === index
+              : true;
             const hoverHeadingColor = member.hoverTextColor ?? '#ffffff';
             const hoverRoleColor = member.hoverRoleColor ?? 'rgba(255, 255, 255, 0.85)';
             const hoverBioColor = member.hoverBioColor ?? 'rgba(255, 255, 255, 0.9)';
@@ -115,6 +122,18 @@ export function TeamSection({ enableMotion = true }: TeamSectionProps) {
                 transition={enableMotion ? { duration: 0.8, delay: index * 0.15 } : undefined}
                 onHoverStart={canHover ? () => setHoveredIndex(index) : undefined}
                 onHoverEnd={canHover ? () => setHoveredIndex(null) : undefined}
+                onFocus={() => setFocusedIndex(index)}
+                onBlur={(event) => {
+                  const relatedTarget = event.relatedTarget;
+                  if (
+                    !(relatedTarget instanceof Node) ||
+                    !event.currentTarget.contains(relatedTarget)
+                  ) {
+                    setFocusedIndex(null);
+                  }
+                }}
+                tabIndex={0}
+                aria-label={`${member.name} profile card`}
                 className={`relative ${canHover ? 'group cursor-pointer' : ''}`}
               >
                 <motion.div

@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
-import { ResultMetric } from '../../data/caseStudyData';
+import type { ResultMetric } from '../../data/types';
 import { CheckCircle2 } from 'lucide-react';
 
 interface ResultsSectionProps {

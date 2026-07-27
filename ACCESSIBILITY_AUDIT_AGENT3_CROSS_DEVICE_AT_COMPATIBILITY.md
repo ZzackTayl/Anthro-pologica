@@ -1,5 +1,5 @@
 # Accessibility Audit Report: Cross-Device & Assistive Technology Compatibility
-## Anthro-pologica UX Agency Website
+## Savoirity LLC UX Agency Website
 
 **Audit Date:** 2025-11-25
 **Auditor:** Agent 3 - Cross-Device & AT Compatibility Specialist
@@ -41,7 +41,7 @@
 ## 1. MOBILE RESPONSIVENESS AND TOUCH ACCESSIBILITY
 
 ### 1.1 Viewport Configuration
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/index.html:6`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/index.html:6`
 
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -62,14 +62,14 @@
 **Issues Found:**
 
 #### 1.2.1 Icon-Only Buttons (HIGH)
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/components/Navigation.tsx:85-86`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/components/Navigation.tsx:85-86`
 
 ```tsx
 <ArrowLeft size={20} color="var(--psychedelic-cyan)" />
 <span style={{ color: 'var(--psychedelic-cyan)' }}>Back to Home</span>
 ```
 
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/components/AccessibilityPreferences.tsx:115`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/components/AccessibilityPreferences.tsx:115`
 
 ```tsx
 <X size={24} color="var(--psychedelic-cyan)" />
@@ -99,7 +99,7 @@
 ---
 
 #### 1.2.2 Mobile Navigation Button Size
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/components/ui/button.tsx:24-28`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/components/ui/button.tsx:24-28`
 
 ```tsx
 size: {
@@ -130,7 +130,7 @@ size: {
 ---
 
 ### 1.3 Touch Gesture Support
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/components/ui/use-can-hover.ts`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/components/ui/use-can-hover.ts`
 
 **Status:** ✅ EXCELLENT
 ```tsx
@@ -154,7 +154,7 @@ whileHover={enableMotion && canHover ? { scale: 1.05, x: 10 } : undefined}
 ---
 
 ### 1.4 Mobile Breakpoint Strategy
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/components/ui/use-mobile.ts:3`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/components/ui/use-mobile.ts:3`
 
 ```tsx
 const MOBILE_BREAKPOINT = 768;
@@ -190,7 +190,7 @@ const MOBILE_BREAKPOINT = 768;
 ---
 
 ### 1.5 Mobile Animation Performance
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/App.tsx:95-105`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/App.tsx:95-105`
 
 ```tsx
 useEffect(() => {
@@ -216,7 +216,7 @@ useEffect(() => {
 ### 2.1 Document Structure and Landmarks
 
 #### 2.1.1 CRITICAL: Missing Skip Navigation Link
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/App.tsx:123`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/App.tsx:123`
 
 **Current Structure:**
 ```tsx
@@ -263,13 +263,13 @@ useEffect(() => {
 **Current Issues:**
 
 1. **No `<main>` Landmark**
-   - **File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/App.tsx:123-178`
+   - **File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/App.tsx:123-178`
    - Content wrapped in generic `<div>` instead of `<main>`
    - **Impact:** Screen readers cannot navigate to main content
    - **WCAG Violation:** 1.3.1 (Info and Relationships - Level A)
 
 2. **Navigation Not Semantically Marked**
-   - **File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/components/Navigation.tsx:17-58`
+   - **File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/components/Navigation.tsx:17-58`
    ```tsx
    <motion.nav className="fixed top-0..." />
    ```
@@ -277,7 +277,7 @@ useEffect(() => {
    - Multiple navigation areas need distinct labels
 
 3. **Sections Missing Semantic Structure**
-   - **File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/components/HeroSection.tsx:62`
+   - **File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/components/HeroSection.tsx:62`
    ```tsx
    <section className="relative min-h-screen...">
    ```
@@ -333,7 +333,7 @@ useEffect(() => {
 **Current Issues:**
 
 1. **Hero Section Heading**
-   - **File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/components/HeroSection.tsx:179-194`
+   - **File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/components/HeroSection.tsx:179-194`
    ```tsx
    <h1 className="groovy-text mb-6...">ANTHRO-POLOGICA</h1>
    ```
@@ -380,7 +380,7 @@ useEffect(() => {
 ### 2.3 Interactive Element Announcements
 
 #### 2.3.1 Form Field Labels and Descriptions
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/components/ContactSection.tsx:310-428`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/components/ContactSection.tsx:310-428`
 
 **Current Implementation:**
 ```tsx
@@ -463,7 +463,7 @@ useEffect(() => {
 ---
 
 #### 2.3.2 Button Labels and States
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/components/Navigation.tsx:53-54`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/components/Navigation.tsx:53-54`
 
 **Current Implementation:**
 ```tsx
@@ -510,7 +510,7 @@ useEffect(() => {
 ### 2.4 Decorative vs. Informative Images
 
 #### 2.4.1 Background Animations and Decorative Graphics
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/components/HeroSection.tsx:64-140`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/components/HeroSection.tsx:64-140`
 
 **Status:** ✅ GOOD (with minor improvement needed)
 
@@ -551,7 +551,7 @@ useEffect(() => {
 ### 2.5 Dynamic Content Announcements
 
 #### 2.5.1 Route Changes and Page Transitions
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/App.tsx:131-178`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/App.tsx:131-178`
 
 **Current Implementation:**
 ```tsx
@@ -613,7 +613,7 @@ useEffect(() => {
 ---
 
 #### 2.5.2 Loading States and Suspense Boundaries
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/App.tsx:44-59`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/App.tsx:44-59`
 
 **Current Implementation:**
 ```tsx
@@ -660,7 +660,7 @@ function SectionSkeleton() {
 ### 3.1 CSS Feature Support
 
 #### 3.1.1 CSS Custom Properties (CSS Variables)
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/styles/globals.css:2075-2125`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/styles/globals.css:2075-2125`
 
 **Usage:**
 ```css
@@ -711,7 +711,7 @@ function SectionSkeleton() {
 ---
 
 #### 3.1.3 CSS backdrop-filter
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/components/Navigation.tsx:21`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/components/Navigation.tsx:21`
 
 **Usage:**
 ```tsx
@@ -748,7 +748,7 @@ style={{
 ---
 
 #### 3.1.4 Prefers-Reduced-Motion Support
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/styles/globals.css:2290-2296`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/styles/globals.css:2290-2296`
 
 **Implementation:**
 ```css
@@ -806,7 +806,7 @@ const mediaQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
 ---
 
 #### 3.2.2 localStorage API
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/hooks/useAccessibilityPreferences.ts:33`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/hooks/useAccessibilityPreferences.ts:33`
 
 **Usage:**
 ```tsx
@@ -865,7 +865,7 @@ viewport={{ once: true, amount: 0.3 }}
 ### 3.3 Framer Motion Accessibility
 
 #### 3.3.1 MotionConfig Reduced Motion
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/App.tsx:110`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/App.tsx:110`
 
 **Implementation:**
 ```tsx
@@ -901,7 +901,7 @@ whileHover={enableMotion && canHover ? { scale: 1.05 } : undefined}
 ### 4.1 Rendering Performance
 
 #### 4.1.1 Animation Performance Optimization
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/components/HeroSection.tsx:69-78`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/components/HeroSection.tsx:69-78`
 
 **Implementation:**
 ```tsx
@@ -931,7 +931,7 @@ willChange: enableMotion ? 'transform' : 'auto'
 ---
 
 #### 4.1.2 Scroll Performance
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/components/HeroSection.tsx:14-36`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/components/HeroSection.tsx:14-36`
 
 **Implementation:**
 ```tsx
@@ -951,7 +951,7 @@ window.addEventListener('scroll', handleScroll, { passive: true });
 ---
 
 #### 4.1.3 Component Lazy Loading
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/App.tsx:12-42`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/App.tsx:12-42`
 
 **Implementation:**
 ```tsx
@@ -975,7 +975,7 @@ const PhilosophySection = lazy(() =>
 ### 4.2 Memory Management
 
 #### 4.2.1 Animation Cleanup
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/components/HeroSection.tsx:32-36`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/components/HeroSection.tsx:32-36`
 
 **Implementation:**
 ```tsx
@@ -993,7 +993,7 @@ return () => {
 ---
 
 #### 4.2.2 Memoization of Heavy Computations
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/components/HeroSection.tsx:43-59`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/components/HeroSection.tsx:43-59`
 
 **Implementation:**
 ```tsx
@@ -1012,7 +1012,7 @@ const geometricShapes = useMemo(() => {
 ### 4.3 Network Performance
 
 #### 4.3.1 Font Loading Strategy
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/index.css:1-33`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/index.css:1-33`
 
 **Implementation:**
 ```css
@@ -1036,7 +1036,7 @@ const geometricShapes = useMemo(() => {
 ---
 
 #### 4.3.2 External Font Loading
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/index.css:1`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/index.css:1`
 
 ```css
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap");
@@ -1065,7 +1065,7 @@ const geometricShapes = useMemo(() => {
 ### 5.1 Text Zoom (200%)
 
 #### 5.1.1 Fixed Navigation at High Zoom
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/components/Navigation.tsx:17-26`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/components/Navigation.tsx:17-26`
 
 **Implementation:**
 ```tsx
@@ -1117,7 +1117,7 @@ const geometricShapes = useMemo(() => {
 ---
 
 #### 5.1.2 Font Size Scaling
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/styles/globals.css:2164-2166`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/styles/globals.css:2164-2166`
 
 **Implementation:**
 ```css
@@ -1179,7 +1179,7 @@ html {
 ### 5.2 Responsive Breakpoints and Reflow
 
 #### 5.2.1 Single-Column Reflow
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/styles/globals.css`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/styles/globals.css`
 
 **Grid Implementation:**
 ```css
@@ -1233,7 +1233,7 @@ body {
 
 ### 5.3 Pinch-to-Zoom on Mobile
 
-**File:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/index.html:6`
+**File:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/index.html:6`
 
 **Implementation:**
 ```html
@@ -1503,7 +1503,7 @@ Safari: Cmd + Plus
 ### P0 - CRITICAL (Immediate Action Required)
 
 1. **Add Skip Navigation Link**
-   - **Location:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/App.tsx:123`
+   - **Location:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/App.tsx:123`
    - **WCAG:** 2.4.1 (Level A)
    - **Legal:** ADA/Section 508 violation
    - **Effort:** 1 hour
@@ -1515,7 +1515,7 @@ Safari: Cmd + Plus
    - **Effort:** 2-4 hours
 
 3. **Fix Form Field Labels**
-   - **Location:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/components/ContactSection.tsx`
+   - **Location:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/components/ContactSection.tsx`
    - **WCAG:** 1.3.1, 3.3.2 (Level A), 4.1.3 (Level AA)
    - **Legal:** Section 508 violation
    - **Effort:** 2-3 hours
@@ -1523,18 +1523,18 @@ Safari: Cmd + Plus
 ### P1 - HIGH (Within 1 Week)
 
 4. **Add Focus Management for Route Changes**
-   - **Location:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/App.tsx`
+   - **Location:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/App.tsx`
    - **WCAG:** 2.4.3 (Level A), 4.1.3 (Level AA)
    - **Effort:** 2-3 hours
 
 5. **Fix Touch Target Sizes**
-   - **Location:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/components/ui/button.tsx`
+   - **Location:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/components/ui/button.tsx`
    - **WCAG:** 2.5.5 (Level AAA)
    - **Legal:** Section 508 concern
    - **Effort:** 1-2 hours
 
 6. **Test Fixed Navigation at 200% Zoom**
-   - **Location:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/components/Navigation.tsx`
+   - **Location:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/components/Navigation.tsx`
    - **WCAG:** 1.4.10 (Level AA), 1.4.4 (Level AA)
    - **Effort:** Manual testing + potential fixes (2-4 hours)
 
@@ -1551,7 +1551,7 @@ Safari: Cmd + Plus
    - **Effort:** 3-4 hours
 
 9. **Add Loading State Announcements**
-   - **Location:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/App.tsx`
+   - **Location:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/App.tsx`
    - **WCAG:** 4.1.3 (Level AA)
    - **Effort:** 1-2 hours
 
@@ -1568,7 +1568,7 @@ Safari: Cmd + Plus
     - **Effort:** 1 hour
 
 12. **Add localStorage Availability Check**
-    - **Location:** `/Users/zackstewart/Documents/GitHub/Anthro-pologica/src/hooks/useAccessibilityPreferences.ts`
+    - **Location:** `/Users/zackstewart/Documents/GitHub/Savoirity LLC/src/hooks/useAccessibilityPreferences.ts`
     - **Impact:** Private browsing compatibility
     - **Effort:** 30 minutes
 
